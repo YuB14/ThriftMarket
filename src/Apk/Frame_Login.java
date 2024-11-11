@@ -165,11 +165,11 @@ public class Frame_Login extends javax.swing.JFrame {
     private void Check_ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_ShowPasswordActionPerformed
         // TODO add your handling code here:
        // if(Check_ShowPassword.isSelected()) {
-         //  Text_Password.setEchoChar((char)0); 
-        //}
-        //else {
-          //  Text_Password.setEchoChar('*');
-        //}
+           Text_Password.setEchoChar((char)0); 
+        }
+        else {
+            Text_Password.setEchoChar('*');
+        }
     }//GEN-LAST:event_Check_ShowPasswordActionPerformed
 
     /**
