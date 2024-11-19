@@ -1,23 +1,30 @@
 package DataBase;
 
-
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 //test pull ke master
 public class database {
-   public static Connection com;
-    public static Statement stm; 
 
-    public static void main(String[] args) {
+    private static Connection con;
+
+    public static Connection getConnection() {
+
         try {
-            String url = "jdbc:mysql://localhost:3306/thrift_market";
+            String url = "jdbc:mysql://localhost:3306/mythrift";
             String user = "root";
             String pass = "";
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            com =DriverManager.getConnection(url,user,pass);
-            stm =com.createStatement();
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            con = (Connection) DriverManager.getConnection(url, user, pass);
             System.out.println("Koneksi berhasil");
         } catch (Exception e) {
-            System.err.println("Koneksi gagal " +e.getMessage());
+            Logger.getLogger(database.class.getName()).log(Level.SEVERE, null, e);
+            System.err.println("Koneksi gagal " + e.getMessage());
         }
+        return con;
     }
-}    
+}

@@ -1,7 +1,19 @@
+
 package Apk;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 
 public class Frame_Register extends javax.swing.JFrame {
 
@@ -15,7 +27,8 @@ public class Frame_Register extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // Membuka JFrame Login
-                Frame_Login Frame_LoginFrame = new Frame_Login();
+                Frame_Login Frame_LoginFrame;
+                Frame_LoginFrame = new Frame_Login();
                 Frame_LoginFrame.setVisible(true);
                 dispose();
             }
@@ -31,57 +44,34 @@ public class Frame_Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Ikon_NamaLengkap = new javax.swing.JLabel();
         Ikon_NoTelp = new javax.swing.JLabel();
         Ikon_Username = new javax.swing.JLabel();
         Ikon_Password = new javax.swing.JLabel();
-        Text_Password = new javax.swing.JTextField();
-        Tombol_Register = new javax.swing.JButton();
         SignIn = new javax.swing.JLabel();
-        Text_Username = new javax.swing.JTextField();
+        Text_Uname = new javax.swing.JTextField();
         Text_No_Telp = new javax.swing.JTextField();
-        Text_Nama_Lengkap = new javax.swing.JTextField();
+        Check_ShowPassword = new javax.swing.JCheckBox();
+        J_Password = new javax.swing.JPasswordField();
+        Tombol_Register = new javax.swing.JButton();
+        Text_Role = new javax.swing.JTextField();
         Frame_Register = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Ikon_NamaLengkap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Apk/Kumpulan_Gambar/Name Tag.png"))); // NOI18N
-        getContentPane().add(Ikon_NamaLengkap, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 30, 30));
-
-        Ikon_NoTelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Apk/Kumpulan_Gambar/Phone.png"))); // NOI18N
+        Ikon_NoTelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Phone.png"))); // NOI18N
         getContentPane().add(Ikon_NoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 30, 30));
 
-        Ikon_Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Apk/Kumpulan_Gambar/Male User_1.png"))); // NOI18N
+        Ikon_Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Male User.png"))); // NOI18N
         getContentPane().add(Ikon_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 30, 30));
 
-        Ikon_Password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Apk/Kumpulan_Gambar/Password_1.png"))); // NOI18N
-        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, -1, 30));
-
-        Text_Password.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Text_Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Text_Password.setText("Password");
-        Text_Password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Text_PasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Text_PasswordFocusLost(evt);
-            }
-        });
-        getContentPane().add(Text_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 200, 30));
-
-        Tombol_Register.setBackground(new java.awt.Color(0, 0, 204));
-        Tombol_Register.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        Tombol_Register.setForeground(new java.awt.Color(255, 255, 255));
-        Tombol_Register.setText("Register");
-        getContentPane().add(Tombol_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 120, 30));
+        Ikon_Password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Password.png"))); // NOI18N
+        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 30, 30));
 
         SignIn.setFont(new java.awt.Font("Bookman Old Style", 1, 20)); // NOI18N
         SignIn.setForeground(new java.awt.Color(255, 255, 255));
         SignIn.setText("Sign In");
-        SignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SignIn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SignInMouseClicked(evt);
@@ -89,19 +79,19 @@ public class Frame_Register extends javax.swing.JFrame {
         });
         getContentPane().add(SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 80, -1));
 
-        Text_Username.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Text_Username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Text_Username.setText("Username");
-        Text_Username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Username.addFocusListener(new java.awt.event.FocusAdapter() {
+        Text_Uname.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        Text_Uname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Text_Uname.setText("Username");
+        Text_Uname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Text_Uname.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                Text_UsernameFocusGained(evt);
+                Text_UnameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                Text_UsernameFocusLost(evt);
+                Text_UnameFocusLost(evt);
             }
         });
-        getContentPane().add(Text_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 200, 30));
+        getContentPane().add(Text_Uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 200, 30));
 
         Text_No_Telp.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         Text_No_Telp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -117,47 +107,62 @@ public class Frame_Register extends javax.swing.JFrame {
         });
         getContentPane().add(Text_No_Telp, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 200, 30));
 
-        Text_Nama_Lengkap.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Text_Nama_Lengkap.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Text_Nama_Lengkap.setText("Nama Lengkap");
-        Text_Nama_Lengkap.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Nama_Lengkap.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Text_Nama_LengkapFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Text_Nama_LengkapFocusLost(evt);
+        Check_ShowPassword.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
+        Check_ShowPassword.setForeground(new java.awt.Color(255, 255, 255));
+        Check_ShowPassword.setText("Show Password");
+        Check_ShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Check_ShowPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(Text_Nama_Lengkap, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
+        getContentPane().add(Check_ShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
+
+        J_Password.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        J_Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        J_Password.setText("Password");
+        J_Password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        J_Password.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                J_PasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                J_PasswordFocusLost(evt);
+            }
+        });
+        getContentPane().add(J_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 200, 30));
+
+        Tombol_Register.setBackground(new java.awt.Color(0, 102, 153));
+        Tombol_Register.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        Tombol_Register.setForeground(new java.awt.Color(255, 255, 255));
+        Tombol_Register.setText("Register");
+        Tombol_Register.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tombol_RegisterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Tombol_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 100, 30));
+
+        Text_Role.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        Text_Role.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Text_Role.setText("Pengguna");
+        Text_Role.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
 
         Frame_Register.setForeground(new java.awt.Color(255, 255, 255));
-        Frame_Register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Apk/Kumpulan_Gambar/Frame_Register.png"))); // NOI18N
+        Frame_Register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Frame_Register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Register.png"))); // NOI18N
+        Frame_Register.setText("Pengguna");
         Frame_Register.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        getContentPane().add(Frame_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Frame_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 580));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignInMouseClicked
 
     }//GEN-LAST:event_SignInMouseClicked
-
-    private void Text_Nama_LengkapFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_Nama_LengkapFocusGained
-        // TODO add your handling code here:
-        String fullname = Text_Nama_Lengkap.getText();
-        if (fullname.equals("Nama Lengkap")) {
-            Text_Nama_Lengkap.setText("");
-        }
-    }//GEN-LAST:event_Text_Nama_LengkapFocusGained
-
-    private void Text_Nama_LengkapFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_Nama_LengkapFocusLost
-        // TODO add your handling code here:
-        String fullname = Text_Nama_Lengkap.getText();
-        if (fullname.equals("") || fullname.equals("Nama Lengkap")) {
-            Text_Nama_Lengkap.setText("Nama Lengkap");
-        }
-    }//GEN-LAST:event_Text_Nama_LengkapFocusLost
 
     private void Text_No_TelpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_No_TelpFocusGained
         // TODO add your handling code here:
@@ -175,84 +180,141 @@ public class Frame_Register extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Text_No_TelpFocusLost
 
-    private void Text_UsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UsernameFocusGained
+    private void Text_UnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UnameFocusGained
         // TODO add your handling code here:
-        String name = Text_Username.getText();
+        String name = Text_Uname.getText();
         if (name.equals("Username")) {
-            Text_Username.setText("");
+            Text_Uname.setText("");
         }
-    }//GEN-LAST:event_Text_UsernameFocusGained
+    }//GEN-LAST:event_Text_UnameFocusGained
 
-    private void Text_UsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UsernameFocusLost
+    private void Text_UnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UnameFocusLost
         // TODO add your handling code here:
-        String name = Text_Username.getText();
+        String name = Text_Uname.getText();
         if (name.equals("") || name.equals("Username")) {
-            Text_Username.setText("Username");
+            Text_Uname.setText("Username");
         }
-    }//GEN-LAST:event_Text_UsernameFocusLost
+    }//GEN-LAST:event_Text_UnameFocusLost
 
-    private void Text_PasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_PasswordFocusGained
+    private void Check_ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_ShowPasswordActionPerformed
         // TODO add your handling code here:
-        String pass = Text_Password.getText();
+        if (Check_ShowPassword.isSelected()) {
+            J_Password.setEchoChar((char) 0);
+        } else {
+            J_Password.setEchoChar('*');
+        }
+    }//GEN-LAST:event_Check_ShowPasswordActionPerformed
+
+    private void J_PasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_J_PasswordFocusGained
+        // TODO add your handling code here:
+        String pass = J_Password.getText();
         if (pass.equals("Password")) {
-            Text_Password.setText("");
+            J_Password.setText("");
         }
-    }//GEN-LAST:event_Text_PasswordFocusGained
+    }//GEN-LAST:event_J_PasswordFocusGained
 
-    private void Text_PasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_PasswordFocusLost
+    private void J_PasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_J_PasswordFocusLost
         // TODO add your handling code here:
-        String pass = Text_Password.getText();
+        String pass = J_Password.getText();
         if (pass.equals("") || pass.equals("Password")) {
-            Text_Password.setText("Password");
+            J_Password.setText("Password");
         }
-    }//GEN-LAST:event_Text_PasswordFocusLost
+    }//GEN-LAST:event_J_PasswordFocusLost
+
+    private void Tombol_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_RegisterActionPerformed
+        // TODO add your handling code here:
+        String role, notelp, uname, pass, query;
+        String Surl, Suname, Spass;
+        Surl = "jdbc:MySQL://localhost:3306/mythrift";
+        Suname = "root";
+        Spass = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(Surl, Suname, Spass);
+            Statement st = con.createStatement();
+            if ("".equals(Text_Role.getText())) {
+                JOptionPane.showMessageDialog(new JFrame(), "Pengguna is require", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if ("".equals(Text_No_Telp.getText())) {
+                JOptionPane.showMessageDialog(new JFrame(), "No Telp is require", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if ("".equals(Text_Uname.getText())) {
+                JOptionPane.showMessageDialog(new JFrame(), "Username is require", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if ("".equals(J_Password.getText())) {
+                JOptionPane.showMessageDialog(new JFrame(), "Password is require", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+            role = Text_Role.getText();
+            notelp = Text_No_Telp.getText();
+            uname = Text_Uname.getText();
+            pass = J_Password.getText();
+            
+            query = "INSERT INTO tabel_pengguna (Role, No_Telp, Username, Password)"+
+                    "VALUES('"+role+"', '"+notelp+"', '"+uname+"', '"+pass+"')";  
+            
+            st.execute(query);
+            Text_Role.setText("");
+            Text_No_Telp.setText("");
+            Text_Uname.setText("");
+            J_Password.setText("");
+            showMessageDialog(null, "Akun Berhasil Dibuat");  
+            {
+
+            }
+        }
+    }
+    catch(Exception e
+
+    
+        ) {
+            System.out.println("Error" + e.getMessage());
+    }
+
+    }//GEN-LAST:event_Tombol_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Frame_Register().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(Frame_Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Frame_Register().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Check_ShowPassword;
     private javax.swing.JLabel Frame_Register;
-    private javax.swing.JLabel Ikon_NamaLengkap;
     private javax.swing.JLabel Ikon_NoTelp;
     private javax.swing.JLabel Ikon_Password;
     private javax.swing.JLabel Ikon_Username;
+    private javax.swing.JPasswordField J_Password;
     private javax.swing.JLabel SignIn;
-    private javax.swing.JTextField Text_Nama_Lengkap;
     private javax.swing.JTextField Text_No_Telp;
-    private javax.swing.JTextField Text_Password;
-    private javax.swing.JTextField Text_Username;
+    private javax.swing.JTextField Text_Role;
+    private javax.swing.JTextField Text_Uname;
     private javax.swing.JButton Tombol_Register;
     // End of variables declaration//GEN-END:variables
 }
