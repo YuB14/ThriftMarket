@@ -24,106 +24,99 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="Label_Deskripsi1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="Label_Barang" alignment="0" max="32767" attributes="0"/>
-                  <Component id="Label_Kasir" alignment="0" max="32767" attributes="0"/>
-                  <Component id="Label_Laporan" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" pref="160" max="32767" attributes="0"/>
-                  <Component id="Label_Barang1" alignment="1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="Text_Deskripsi" max="32767" attributes="0"/>
-                      <Component id="Text_Harga" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="Tombol_Tambah" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Tombol_Perbarui" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Tombol_Batal" min="-2" pref="72" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Tombol_Hapus" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="Text_NamaKategori" alignment="1" max="32767" attributes="0"/>
-                      <Component id="Text_NamaBarang" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="Text_JumlahBarang" min="-2" pref="310" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Text_Pencarian" pref="872" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="83" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Label_Barang" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="Label_Barang1" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="Label_Deskripsi1" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="Label_Kasir" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="Label_Laporan" min="-2" pref="160" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Text_NamaKategori" min="-2" pref="316" max="-2" attributes="0"/>
+                          <Component id="Text_NamaBarang" min="-2" pref="316" max="-2" attributes="0"/>
+                          <Component id="Text_JumlahBarang" min="-2" pref="316" max="-2" attributes="0"/>
+                          <Component id="Text_Harga" min="-2" pref="316" max="-2" attributes="0"/>
+                          <Component id="Text_Deskripsi" min="-2" pref="316" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="Tombol_Tambah" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Tombol_Perbarui" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Tombol_Batal" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Tombol_Hapus" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="jLabel1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane2" pref="864" max="32767" attributes="0"/>
+                  <Component id="Text_Pencarian" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Label_Barang" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="Text_NamaKategori" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="Text_NamaBarang" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Text_JumlahBarang" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Text_Harga" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Text_Deskripsi" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Label_Barang" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                               <Component id="Label_Barang1" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                               <Component id="Label_Deskripsi1" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                               <Component id="Label_Kasir" min="-2" pref="70" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="Tombol_Tambah" max="32767" attributes="0"/>
-                                  <Component id="Tombol_Perbarui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tombol_Batal" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tombol_Hapus" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Label_Laporan" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="Label_Laporan" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+                              <Component id="Text_NamaKategori" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                              <Component id="Text_NamaBarang" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                              <Component id="Text_JumlahBarang" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                              <Component id="Text_Harga" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                              <Component id="Text_Deskripsi" min="-2" pref="40" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="Tombol_Perbarui" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Tombol_Tambah" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Tombol_Hapus" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="Tombol_Batal" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Component id="Text_Pencarian" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="358" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="430" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="275" max="32767" attributes="0"/>
+              <EmptySpace pref="112" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -159,18 +152,50 @@
         <Property name="text" type="java.lang.String" value="Gudang"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Label_Laporan">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Laporan"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Log Out"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Component class="javax.swing.JButton" name="Tombol_Tambah">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tambah"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_TambahActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Tombol_Perbarui">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Perbarui"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_PerbaruiActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Tombol_Batal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Batal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_BatalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Tombol_Hapus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hapus"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_HapusActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_Barang1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Barang "/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -180,23 +205,17 @@
         <Component class="javax.swing.JTable" name="Tabel_Data">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
-                <Column editable="true" title="ID Kategori" type="java.lang.Object"/>
+              <Table columnCount="6" rowCount="4">
+                <Column editable="true" title="ID_Kategori" type="java.lang.Object"/>
                 <Column editable="true" title="Nama Kategori" type="java.lang.Object"/>
-                <Column editable="true" title="ID Barang" type="java.lang.Object"/>
                 <Column editable="true" title="Nama Barang" type="java.lang.Object"/>
                 <Column editable="true" title="Jumlah Barang" type="java.lang.Object"/>
-                <Column editable="true" title="Harga" type="java.lang.Object"/>
+                <Column editable="true" title="Harga Barang" type="java.lang.Object"/>
                 <Column editable="true" title="Deskripsi" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -233,6 +252,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Tabel_DataMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -245,73 +267,35 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nama Barang"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_NamaBarangActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Text_Harga">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Harga "/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_HargaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Text_JumlahBarang">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jumlah Barang"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_JumlahBarangActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Tombol_Tambah">
+    <Component class="javax.swing.JTextField" name="Text_Harga">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tambah"/>
+        <Property name="text" type="java.lang.String" value="Harga Barang"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Tombol_Perbarui">
+    <Component class="javax.swing.JLabel" name="Label_Laporan">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perbarui"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Laporan"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_PerbaruiActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="Tombol_Batal">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Batal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Tombol_Hapus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Hapus"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tombol_HapusActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Text_Deskripsi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Deskripsi"/>
+        <Property name="text" type="java.lang.String" value="Deskripsi Barang"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_DeskripsiActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Text_Pencarian">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pencarian..."/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Text_PencarianActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Text_PencarianKeyTyped"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label_Barang1">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Barang "/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
