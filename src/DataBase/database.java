@@ -23,7 +23,6 @@ public class database {
             System.out.println("Koneksi berhasil");
         } catch (Exception e) {
             Logger.getLogger(database.class.getName()).log(Level.SEVERE, null, e);
-            System.err.println("Koneksi gagal " + e.getMessage());
         }
         return con;
     }
