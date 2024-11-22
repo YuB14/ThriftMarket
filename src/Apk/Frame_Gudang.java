@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 public class Frame_Gudang extends javax.swing.JFrame {
@@ -13,7 +14,8 @@ public class Frame_Gudang extends javax.swing.JFrame {
 
     public Frame_Gudang() {
         initComponents();
-         con = database.getConnection();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        con = database.getConnection();
     }
 
     @SuppressWarnings("unchecked")
