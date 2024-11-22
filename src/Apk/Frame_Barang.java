@@ -1,6 +1,8 @@
 package Apk;
 
 import DataBase.database;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -21,6 +23,36 @@ public class Frame_Barang extends javax.swing.JFrame {
         MengambilData();
         nonaktifButton();
         aktifButton();
+        
+        LabelMenu_FrameDashboard.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Membuka JFrame Login
+                Frame_Dashboard Frame_DashboardFrame = new Frame_Dashboard();
+                Frame_DashboardFrame.setVisible(true);
+                dispose();
+            }
+        });
+        
+        LabelMenu_Barang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Membuka JFrame Login
+                Frame_Barang Frame_BarangFrame = new Frame_Barang();
+                Frame_BarangFrame.setVisible(true);
+                dispose();
+            }
+        });
+        
+        LabelMenu_Gudang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Membuka JFrame Login
+                Frame_Gudang Frame_GudangFrame = new Frame_Gudang();
+                Frame_GudangFrame.setVisible(true);
+                dispose();
+            }
+        });
     }
     
         private void MengambilData() {
@@ -57,13 +89,12 @@ public class Frame_Barang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        LabelMenu_FrameDashboard = new javax.swing.JLabel();
+        LabelMenu_Gudang = new javax.swing.JLabel();
+        LabelMenu_Barang = new javax.swing.JLabel();
+        LabelMenu_Kasir = new javax.swing.JLabel();
+        LabelMenu_Laporan = new javax.swing.JLabel();
+        Tombol_LogOut = new javax.swing.JButton();
         Text_NamaKategori = new javax.swing.JTextField();
         Text_NamaBarang = new javax.swing.JTextField();
         Text_JumlahBarang = new javax.swing.JTextField();
@@ -76,73 +107,121 @@ public class Frame_Barang extends javax.swing.JFrame {
         Text_Pencarian = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Data = new javax.swing.JTable();
+        LabelText_Dashboard = new javax.swing.JLabel();
+        LabelText_Gudang = new javax.swing.JLabel();
+        LabelText_Barang = new javax.swing.JLabel();
+        LabelText_MenuKasir = new javax.swing.JLabel();
+        LabelText_MenuLaporan = new javax.swing.JLabel();
+        Label_FrameBarang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGO");
+        LabelMenu_FrameDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMenu_FrameDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Dashboard (1)_1.png"))); // NOI18N
+        LabelMenu_FrameDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(LabelMenu_FrameDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 170, 70));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("DASHBOARD");
+        LabelMenu_Gudang.setForeground(new java.awt.Color(255, 255, 255));
+        LabelMenu_Gudang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMenu_Gudang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Gudang (1)_1.png"))); // NOI18N
+        LabelMenu_Gudang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(LabelMenu_Gudang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 170, 70));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("BARANG");
+        LabelMenu_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMenu_Barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuBarang.png"))); // NOI18N
+        LabelMenu_Barang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(LabelMenu_Barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 170, 70));
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("GUDANG");
+        LabelMenu_Kasir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMenu_Kasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuKasir.png"))); // NOI18N
+        LabelMenu_Kasir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(LabelMenu_Kasir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 170, 70));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("KASIR");
+        LabelMenu_Laporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelMenu_Laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuLaporan.png"))); // NOI18N
+        LabelMenu_Laporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(LabelMenu_Laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 170, 60));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("LAPORAN");
-
-        jButton1.setText("Log Out");
+        Tombol_LogOut.setText("Log Out");
+        Tombol_LogOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_LogOut.setContentAreaFilled(false);
+        Tombol_LogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(Tombol_LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 620, 80, 30));
 
         Text_NamaKategori.setText("Nama Kategori");
+        Text_NamaKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_NamaKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 330, 30));
 
         Text_NamaBarang.setText("Nama Barang");
+        Text_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_NamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 330, 30));
 
         Text_JumlahBarang.setText("Jumlah Barang");
+        Text_JumlahBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_JumlahBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 330, 30));
 
         Text_Harga.setText("Harga Barang");
+        Text_Harga.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Text_Harga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Text_HargaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Text_Harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 330, 30));
 
         Text_Deskripsi.setText("Deskripsi Barang");
+        Text_Deskripsi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_Deskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 330, 30));
 
         Tombol_Tambah.setText("Tambah");
+        Tombol_Tambah.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_Tambah.setContentAreaFilled(false);
         Tombol_Tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_TambahActionPerformed(evt);
             }
         });
+        getContentPane().add(Tombol_Tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 580, 70, 30));
 
         Tombol_Perbarui.setText("Perbarui");
+        Tombol_Perbarui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_Perbarui.setContentAreaFilled(false);
         Tombol_Perbarui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_PerbaruiActionPerformed(evt);
             }
         });
+        getContentPane().add(Tombol_Perbarui, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 580, 70, 30));
 
         Tombol_Batal.setText("Batal");
+        Tombol_Batal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_Batal.setContentAreaFilled(false);
         Tombol_Batal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_BatalActionPerformed(evt);
             }
         });
+        getContentPane().add(Tombol_Batal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 580, 60, 30));
 
         Tombol_Hapus.setText("Hapus");
+        Tombol_Hapus.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_Hapus.setContentAreaFilled(false);
         Tombol_Hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_HapusActionPerformed(evt);
             }
         });
+        getContentPane().add(Tombol_Hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 60, 30));
 
         Text_Pencarian.setText("Pencarian...");
+        Text_Pencarian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Text_Pencarian.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Text_PencarianKeyTyped(evt);
             }
         });
+        getContentPane().add(Text_Pencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 730, 40));
 
         Tabel_Data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,89 +241,35 @@ public class Frame_Barang extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabel_Data);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Tombol_Tambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tombol_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tombol_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Text_Harga, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text_JumlahBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text_NamaBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text_NamaKategori, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text_Deskripsi, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text_Pencarian)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE))
-                .addGap(6, 6, 6))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Text_NamaKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Text_NamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Text_JumlahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Text_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Text_Deskripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Tombol_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tombol_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tombol_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Text_Pencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 206, 740, 480));
+
+        LabelText_Dashboard.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        LabelText_Dashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelText_Dashboard.setText("DASHBOARD");
+        getContentPane().add(LabelText_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 90, 20));
+
+        LabelText_Gudang.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        LabelText_Gudang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelText_Gudang.setText("GUDANG");
+        getContentPane().add(LabelText_Gudang, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 60, 20));
+
+        LabelText_Barang.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        LabelText_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelText_Barang.setText("BARANG");
+        getContentPane().add(LabelText_Barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 70, 20));
+
+        LabelText_MenuKasir.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        LabelText_MenuKasir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelText_MenuKasir.setText("KASIR");
+        getContentPane().add(LabelText_MenuKasir, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 465, 60, -1));
+
+        LabelText_MenuLaporan.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
+        LabelText_MenuLaporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelText_MenuLaporan.setText("LAPORAN");
+        getContentPane().add(LabelText_MenuLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 60, -1));
+
+        Label_FrameBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Barang.png"))); // NOI18N
+        getContentPane().add(Label_FrameBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -454,6 +479,10 @@ public class Frame_Barang extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Tabel_DataMouseClicked
 
+    private void Text_HargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_HargaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Text_HargaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -487,6 +516,17 @@ public class Frame_Barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelMenu_Barang;
+    private javax.swing.JLabel LabelMenu_FrameDashboard;
+    private javax.swing.JLabel LabelMenu_Gudang;
+    private javax.swing.JLabel LabelMenu_Kasir;
+    private javax.swing.JLabel LabelMenu_Laporan;
+    private javax.swing.JLabel LabelText_Barang;
+    private javax.swing.JLabel LabelText_Dashboard;
+    private javax.swing.JLabel LabelText_Gudang;
+    private javax.swing.JLabel LabelText_MenuKasir;
+    private javax.swing.JLabel LabelText_MenuLaporan;
+    private javax.swing.JLabel Label_FrameBarang;
     private javax.swing.JTable Tabel_Data;
     private javax.swing.JTextField Text_Deskripsi;
     private javax.swing.JTextField Text_Harga;
@@ -496,15 +536,9 @@ public class Frame_Barang extends javax.swing.JFrame {
     private javax.swing.JTextField Text_Pencarian;
     private javax.swing.JButton Tombol_Batal;
     private javax.swing.JButton Tombol_Hapus;
+    private javax.swing.JButton Tombol_LogOut;
     private javax.swing.JButton Tombol_Perbarui;
     private javax.swing.JButton Tombol_Tambah;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
