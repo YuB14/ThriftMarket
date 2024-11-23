@@ -34,16 +34,6 @@ public class Frame_Barang extends javax.swing.JFrame {
             }
         });
         
-        LabelMenu_Barang.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Barang Frame_BarangFrame = new Frame_Barang();
-                Frame_BarangFrame.setVisible(true);
-                dispose();
-            }
-        });
-        
         LabelMenu_Gudang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -130,7 +120,7 @@ public class Frame_Barang extends javax.swing.JFrame {
 
         LabelMenu_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelMenu_Barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuBarang.png"))); // NOI18N
-        LabelMenu_Barang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LabelMenu_Barang.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(LabelMenu_Barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 170, 70));
 
         LabelMenu_Kasir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,6 +137,11 @@ public class Frame_Barang extends javax.swing.JFrame {
         Tombol_LogOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_LogOut.setContentAreaFilled(false);
         Tombol_LogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Tombol_LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tombol_LogOutMouseClicked(evt);
+            }
+        });
         getContentPane().add(Tombol_LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 620, 80, 30));
 
         Text_NamaKategori.setText("Nama Kategori");
@@ -482,6 +477,18 @@ public class Frame_Barang extends javax.swing.JFrame {
     private void Text_HargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_HargaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Text_HargaActionPerformed
+
+    private void Tombol_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_LogOutMouseClicked
+        // TODO add your handling code here:
+         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Membuka Frame Login
+            Frame_Login login = new Frame_Login();
+            login.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_Tombol_LogOutMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

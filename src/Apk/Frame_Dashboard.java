@@ -1,11 +1,11 @@
 package Apk;
 
+import Apk.Frame_Login;
 import static java.awt.GridBagConstraints.BOTH;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 public class Frame_Dashboard extends javax.swing.JFrame {
 
@@ -41,7 +41,7 @@ public class Frame_Dashboard extends javax.swing.JFrame {
 
         Label_Barang = new javax.swing.JLabel();
         Label_TextBarang = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Tombol_LogOut = new javax.swing.JButton();
         Label_Gudang = new javax.swing.JLabel();
         Label_TextGudang = new javax.swing.JLabel();
         Label_Kasir = new javax.swing.JLabel();
@@ -63,14 +63,19 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         Label_TextBarang.setText("BARANG");
         getContentPane().add(Label_TextBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 330, 30));
 
-        jButton1.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 102));
-        jButton1.setText("Log Out");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 80, 110, 30));
+        Tombol_LogOut.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        Tombol_LogOut.setForeground(new java.awt.Color(0, 51, 102));
+        Tombol_LogOut.setText("Log Out");
+        Tombol_LogOut.setToolTipText("");
+        Tombol_LogOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Tombol_LogOut.setContentAreaFilled(false);
+        Tombol_LogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Tombol_LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tombol_LogOutMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Tombol_LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 80, 110, 30));
 
         Label_Gudang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Label_Gudang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Gudang (1).png"))); // NOI18N
@@ -114,37 +119,49 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void Tombol_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_LogOutMouseClicked
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Frame_Dashboard().setVisible(true);
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Membuka Frame Login
+            Frame_Login login = new Frame_Login();
+            login.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_Tombol_LogOutMouseClicked
+
+    public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        });
+        }
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new Frame_Dashboard().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label_Barang;
@@ -156,7 +173,7 @@ public class Frame_Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel Label_TextGudang;
     private javax.swing.JLabel Label_TextKasir;
     private javax.swing.JLabel Label_TextLaporan;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Tombol_LogOut;
     // End of variables declaration//GEN-END:variables
 
 }
