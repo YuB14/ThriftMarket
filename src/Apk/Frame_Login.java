@@ -1,5 +1,7 @@
 package Apk;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,6 +27,9 @@ public class Frame_Login extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
+        Text_Username.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Username");
+        J_Password.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password");
     }
 
     @SuppressWarnings("unchecked")
@@ -34,10 +39,10 @@ public class Frame_Login extends javax.swing.JFrame {
         Ikon_Username = new javax.swing.JLabel();
         Ikon_Password = new javax.swing.JLabel();
         Tombol_SignIn = new javax.swing.JButton();
-        Text_Username = new javax.swing.JTextField();
         SignUp = new javax.swing.JLabel();
         Check_ShowPassword = new javax.swing.JCheckBox();
         J_Password = new javax.swing.JPasswordField();
+        Text_Username = new javax.swing.JTextField();
         Frame_Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,8 +51,9 @@ public class Frame_Login extends javax.swing.JFrame {
         Ikon_Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Male User.png"))); // NOI18N
         getContentPane().add(Ikon_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 30, 50));
 
+        Ikon_Password.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Ikon_Password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Password.png"))); // NOI18N
-        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, 30));
+        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 280, 30, 30));
 
         Tombol_SignIn.setBackground(new java.awt.Color(0, 102, 153));
         Tombol_SignIn.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
@@ -64,20 +70,6 @@ public class Frame_Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Tombol_SignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 90, 30));
-
-        Text_Username.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Text_Username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Text_Username.setText("Username");
-        Text_Username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Username.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                Text_UsernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                Text_UsernameFocusLost(evt);
-            }
-        });
-        getContentPane().add(Text_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
 
         SignUp.setFont(new java.awt.Font("Bookman Old Style", 1, 20)); // NOI18N
         SignUp.setForeground(new java.awt.Color(255, 255, 255));
@@ -96,8 +88,6 @@ public class Frame_Login extends javax.swing.JFrame {
         getContentPane().add(Check_ShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, -1, -1));
 
         J_Password.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        J_Password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        J_Password.setText("Password");
         J_Password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         J_Password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -107,7 +97,11 @@ public class Frame_Login extends javax.swing.JFrame {
                 J_PasswordFocusLost(evt);
             }
         });
-        getContentPane().add(J_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 210, 30));
+        getContentPane().add(J_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 200, 30));
+
+        Text_Username.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        Text_Username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
 
         Frame_Login.setFont(new java.awt.Font("Bookman Old Style", 1, 20)); // NOI18N
         Frame_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Login.png"))); // NOI18N
@@ -152,22 +146,6 @@ public class Frame_Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Tombol_SignInActionPerformed
 
-    private void Text_UsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UsernameFocusGained
-        // TODO add your handling code here:
-        String name = Text_Username.getText();
-        if (name.equals("Username")) {
-            Text_Username.setText("");
-        }
-    }//GEN-LAST:event_Text_UsernameFocusGained
-
-    private void Text_UsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Text_UsernameFocusLost
-        // TODO add your handling code here:
-        String name = Text_Username.getText();
-        if (name.equals("") || name.equals("Username")) {
-            Text_Username.setText("Username");
-        }
-    }//GEN-LAST:event_Text_UsernameFocusLost
-
     private void Check_ShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_ShowPasswordActionPerformed
         // TODO add your handling code here:
         if (Check_ShowPassword.isSelected()) {
@@ -201,30 +179,8 @@ public class Frame_Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        FlatLightLaf.setup();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame_Login().setVisible(true);

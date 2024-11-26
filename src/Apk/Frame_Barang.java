@@ -1,6 +1,8 @@
 package Apk;
 
 import DataBase.database;
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
@@ -53,6 +55,13 @@ public class Frame_Barang extends javax.swing.JFrame {
                 dispose();
             }
         });
+        
+        Text_NamaKategori.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Kategori");
+        Text_NamaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
+        Text_JumlahBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Jumlah Barang");
+        Text_Harga.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Harga Barang");
+        Text_Deskripsi.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Deskripsi Barang");
+        Text_Pencarian.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian...");
     }
     
         private void MengambilData() {
@@ -95,16 +104,13 @@ public class Frame_Barang extends javax.swing.JFrame {
         LabelMenu_Kasir = new javax.swing.JLabel();
         LabelMenu_Laporan = new javax.swing.JLabel();
         Tombol_LogOut = new javax.swing.JButton();
-        Text_NamaKategori = new javax.swing.JTextField();
         Text_NamaBarang = new javax.swing.JTextField();
         Text_JumlahBarang = new javax.swing.JTextField();
-        Text_Harga = new javax.swing.JTextField();
         Text_Deskripsi = new javax.swing.JTextField();
         Tombol_Tambah = new javax.swing.JButton();
         Tombol_Perbarui = new javax.swing.JButton();
         Tombol_Batal = new javax.swing.JButton();
         Tombol_Hapus = new javax.swing.JButton();
-        Text_Pencarian = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Data = new javax.swing.JTable();
         LabelText_Dashboard = new javax.swing.JLabel();
@@ -112,6 +118,10 @@ public class Frame_Barang extends javax.swing.JFrame {
         LabelText_Barang = new javax.swing.JLabel();
         LabelText_MenuKasir = new javax.swing.JLabel();
         LabelText_MenuLaporan = new javax.swing.JLabel();
+        Text_NamaKategori = new javax.swing.JTextField();
+        Label_IkonPencarian = new javax.swing.JLabel();
+        Text_Pencarian = new javax.swing.JTextField();
+        Text_Harga = new javax.swing.JTextField();
         Label_FrameBarang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,28 +164,12 @@ public class Frame_Barang extends javax.swing.JFrame {
         });
         getContentPane().add(Tombol_LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 620, 80, 30));
 
-        Text_NamaKategori.setText("Nama Kategori");
-        Text_NamaKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(Text_NamaKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 330, 30));
-
-        Text_NamaBarang.setText("Nama Barang");
         Text_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(Text_NamaBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 330, 30));
 
-        Text_JumlahBarang.setText("Jumlah Barang");
         Text_JumlahBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(Text_JumlahBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 330, 30));
 
-        Text_Harga.setText("Harga Barang");
-        Text_Harga.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Harga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Text_HargaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Text_Harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 330, 30));
-
-        Text_Deskripsi.setText("Deskripsi Barang");
         Text_Deskripsi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(Text_Deskripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 330, 30));
 
@@ -218,15 +212,6 @@ public class Frame_Barang extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Tombol_Hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 60, 30));
-
-        Text_Pencarian.setText("Pencarian...");
-        Text_Pencarian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Pencarian.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Text_PencarianKeyTyped(evt);
-            }
-        });
-        getContentPane().add(Text_Pencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 730, 40));
 
         Tabel_Data.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -272,6 +257,24 @@ public class Frame_Barang extends javax.swing.JFrame {
         LabelText_MenuLaporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelText_MenuLaporan.setText("LAPORAN");
         getContentPane().add(LabelText_MenuLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 60, -1));
+
+        Text_NamaKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_NamaKategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 330, 30));
+
+        Label_IkonPencarian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label_IkonPencarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Search.png"))); // NOI18N
+        getContentPane().add(Label_IkonPencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 40, 40));
+
+        Text_Pencarian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Text_Pencarian.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Text_PencarianKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Text_Pencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 700, 40));
+
+        Text_Harga.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        getContentPane().add(Text_Harga, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 330, 30));
 
         Label_FrameBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Barang.png"))); // NOI18N
         getContentPane().add(Label_FrameBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 700));
@@ -420,6 +423,43 @@ public class Frame_Barang extends javax.swing.JFrame {
         nonaktifButton();
     }//GEN-LAST:event_Tombol_HapusActionPerformed
 
+    private void Tabel_DataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_DataMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = Tabel_Data.getSelectedRow();
+        if (selectedRow != -1) {
+            String namakategori = Tabel_Data.getValueAt(selectedRow, 1).toString();
+            String namabarang = Tabel_Data.getValueAt(selectedRow, 2).toString();
+            String jumlahbarang = Tabel_Data.getValueAt(selectedRow, 3).toString();
+            String hargabarang = Tabel_Data.getValueAt(selectedRow, 4).toString();
+            String deskripsibarang = Tabel_Data.getValueAt(selectedRow, 5).toString();
+
+            Text_NamaKategori.setText(namakategori);
+            Text_NamaBarang.setText(namabarang);
+            Text_JumlahBarang.setText(jumlahbarang);
+            Text_Harga.setText(hargabarang);
+            Text_Deskripsi.setText(deskripsibarang);
+
+        }
+        
+        Tombol_Tambah.setEnabled(false);
+        Tombol_Batal.setEnabled(true);
+        Tombol_Perbarui.setEnabled(true);
+        Tombol_Hapus.setEnabled(true);
+        
+    }//GEN-LAST:event_Tabel_DataMouseClicked
+
+    private void Tombol_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_LogOutMouseClicked
+        // TODO add your handling code here:
+         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Membuka Frame Login
+            Frame_Login login = new Frame_Login();
+            login.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_Tombol_LogOutMouseClicked
+
     private void Text_PencarianKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Text_PencarianKeyTyped
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) Tabel_Data.getModel();
@@ -459,72 +499,9 @@ public class Frame_Barang extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Text_PencarianKeyTyped
 
-    private void Tabel_DataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_DataMouseClicked
-        // TODO add your handling code here:
-        int selectedRow = Tabel_Data.getSelectedRow();
-        if (selectedRow != -1) {
-            String namakategori = Tabel_Data.getValueAt(selectedRow, 1).toString();
-            String namabarang = Tabel_Data.getValueAt(selectedRow, 2).toString();
-            String jumlahbarang = Tabel_Data.getValueAt(selectedRow, 3).toString();
-            String hargabarang = Tabel_Data.getValueAt(selectedRow, 4).toString();
-            String deskripsibarang = Tabel_Data.getValueAt(selectedRow, 5).toString();
-
-            Text_NamaKategori.setText(namakategori);
-            Text_NamaBarang.setText(namabarang);
-            Text_JumlahBarang.setText(jumlahbarang);
-            Text_Harga.setText(hargabarang);
-            Text_Deskripsi.setText(deskripsibarang);
-
-        }
-        
-        Tombol_Tambah.setEnabled(false);
-        Tombol_Batal.setEnabled(true);
-        Tombol_Perbarui.setEnabled(true);
-        Tombol_Hapus.setEnabled(true);
-        
-    }//GEN-LAST:event_Tabel_DataMouseClicked
-
-    private void Text_HargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_HargaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Text_HargaActionPerformed
-
-    private void Tombol_LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_LogOutMouseClicked
-        // TODO add your handling code here:
-         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-
-        if (confirm == JOptionPane.YES_OPTION) {
-            // Membuka Frame Login
-            Frame_Login login = new Frame_Login();
-            login.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_Tombol_LogOutMouseClicked
-
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        FlatLightLaf.setup();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frame_Barang().setVisible(true);
@@ -544,6 +521,7 @@ public class Frame_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel LabelText_MenuKasir;
     private javax.swing.JLabel LabelText_MenuLaporan;
     private javax.swing.JLabel Label_FrameBarang;
+    private javax.swing.JLabel Label_IkonPencarian;
     private javax.swing.JTable Tabel_Data;
     private javax.swing.JTextField Text_Deskripsi;
     private javax.swing.JTextField Text_Harga;
@@ -558,8 +536,6 @@ public class Frame_Barang extends javax.swing.JFrame {
     private javax.swing.JButton Tombol_Tambah;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
-
 
     private void nonaktifButton() {
         Tombol_Perbarui.setEnabled(false);
