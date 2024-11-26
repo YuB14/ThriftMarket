@@ -23,9 +23,9 @@ public class Frame_Gudang extends javax.swing.JFrame {
         LabelMenu_Dashboard.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Dashboard Frame_DashboardFrame = new Frame_Dashboard();
-                Frame_DashboardFrame.setVisible(true);
+                
+                Frame_Dashboard Dashboard = new Frame_Dashboard();
+                Dashboard.setVisible(true);
                 dispose();
             }
         });
@@ -33,12 +33,22 @@ public class Frame_Gudang extends javax.swing.JFrame {
         LabelMenu_Barang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Barang Frame_BarangFrame = new Frame_Barang();
-                Frame_BarangFrame.setVisible(true);
+                
+                Frame_Barang Barang = new Frame_Barang();
+                Barang.setVisible(true);
                 dispose();
             }
         });
+        
+        //LabelMenu_Laporan.addMouseListener(new MouseAdapter() {
+          //  @Override
+            //public void mouseClicked(MouseEvent e) {
+                
+              //  Frame_Laporan Laporan = new Frame_Laporan();
+              //  Laporan.setVisible(true);
+              //  dispose();
+            //}
+        //});
     }
 
     @SuppressWarnings("unchecked")

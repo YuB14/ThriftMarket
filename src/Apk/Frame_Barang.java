@@ -27,9 +27,9 @@ public class Frame_Barang extends javax.swing.JFrame {
         LabelMenu_FrameDashboard.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Dashboard Frame_DashboardFrame = new Frame_Dashboard();
-                Frame_DashboardFrame.setVisible(true);
+                
+                Frame_Dashboard Dashboard = new Frame_Dashboard();
+                Dashboard.setVisible(true);
                 dispose();
             }
         });
@@ -37,12 +37,22 @@ public class Frame_Barang extends javax.swing.JFrame {
         LabelMenu_Gudang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Gudang Frame_GudangFrame = new Frame_Gudang();
-                Frame_GudangFrame.setVisible(true);
+               
+                Frame_Gudang Gudang = new Frame_Gudang();
+                Gudang.setVisible(true);
                 dispose();
             }
         });
+        
+       // LabelMenu_Laporan.addMouseListener(new MouseAdapter() {
+        //    @Override
+        //    public void mouseClicked(MouseEvent e) {
+                
+        //        Frame_Laporan Laporan = new Frame_Laporan();
+        //        Laporan.setVisible(true);
+        //        dispose();
+        //    }
+        //});
     }
     
         private void MengambilData() {

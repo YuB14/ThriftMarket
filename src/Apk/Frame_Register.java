@@ -25,10 +25,9 @@ public class Frame_Register extends javax.swing.JFrame {
         SignIn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Login Frame_LoginFrame;
-                Frame_LoginFrame = new Frame_Login();
-                Frame_LoginFrame.setVisible(true);
+                
+                Frame_Login Login = new Frame_Login();
+                Login.setVisible(true);
                 dispose();
             }
         });
@@ -53,6 +52,7 @@ public class Frame_Register extends javax.swing.JFrame {
         J_Password = new javax.swing.JPasswordField();
         Tombol_Register = new javax.swing.JButton();
         Text_Role = new javax.swing.JTextField();
+        Ikon_Pengguna = new javax.swing.JLabel();
         Frame_Register = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,12 +148,15 @@ public class Frame_Register extends javax.swing.JFrame {
         Text_Role.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(Text_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
 
+        Ikon_Pengguna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Ikon_Pengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Name Tag_2.png"))); // NOI18N
+        getContentPane().add(Ikon_Pengguna, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 40, 30));
+
         Frame_Register.setForeground(new java.awt.Color(255, 255, 255));
-        Frame_Register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Frame_Register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Register.png"))); // NOI18N
         Frame_Register.setText("Pengguna");
         Frame_Register.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        getContentPane().add(Frame_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 580));
+        getContentPane().add(Frame_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
 
         pack();
         setLocationRelativeTo(null);
@@ -308,6 +311,7 @@ public class Frame_Register extends javax.swing.JFrame {
     private javax.swing.JLabel Frame_Register;
     private javax.swing.JLabel Ikon_NoTelp;
     private javax.swing.JLabel Ikon_Password;
+    private javax.swing.JLabel Ikon_Pengguna;
     private javax.swing.JLabel Ikon_Username;
     private javax.swing.JPasswordField J_Password;
     private javax.swing.JLabel SignIn;

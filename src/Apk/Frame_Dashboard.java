@@ -17,9 +17,9 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         Label_Barang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Barang Frame_BarangFrame = new Frame_Barang();
-                Frame_BarangFrame.setVisible(true);
+                
+                Frame_Barang Barang = new Frame_Barang();
+                Barang.setVisible(true);
                 dispose();
             }
         });
@@ -27,12 +27,22 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         Label_Gudang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Gudang Frame_GudangFrame = new Frame_Gudang();
-                Frame_GudangFrame.setVisible(true);
+                
+                Frame_Gudang Gudang = new Frame_Gudang();
+                Gudang.setVisible(true);
                 dispose();
             }
         });
+        
+        //Label_Laporan.addMouseListener(new MouseAdapter() {
+          //  @Override
+            //public void mouseClicked(MouseEvent e) {
+                
+              //  Frame_Laporan Laporan = new Frame_Laporan();
+                //Laporan.setVisible(true);
+                //dispose();
+           // }
+        //});
     }
     
     @SuppressWarnings("unchecked")
@@ -51,6 +61,7 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         Label_Dashboard = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Label_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

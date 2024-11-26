@@ -19,9 +19,9 @@ public class Frame_Login extends javax.swing.JFrame {
         SignUp.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Membuka JFrame Login
-                Frame_Register Frame_RegisterFrame = new Frame_Register();
-                Frame_RegisterFrame.setVisible(true);
+                
+                Frame_Register Register = new Frame_Register();
+                Register.setVisible(true);
                 dispose();
             }
         });
