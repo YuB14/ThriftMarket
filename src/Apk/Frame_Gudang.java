@@ -40,15 +40,15 @@ public class Frame_Gudang extends javax.swing.JFrame {
             }
         });
         
-        //LabelMenu_Laporan.addMouseListener(new MouseAdapter() {
-          //  @Override
-            //public void mouseClicked(MouseEvent e) {
+        LabelMenu_Laporan.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
                 
-              //  Frame_Laporan Laporan = new Frame_Laporan();
-              //  Laporan.setVisible(true);
-              //  dispose();
-            //}
-        //});
+                Frame_Laporan Laporan = new Frame_Laporan();
+                Laporan.setVisible(true);
+                dispose();
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")

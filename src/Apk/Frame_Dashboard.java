@@ -34,15 +34,15 @@ public class Frame_Dashboard extends javax.swing.JFrame {
             }
         });
         
-        //Label_Laporan.addMouseListener(new MouseAdapter() {
-          //  @Override
-            //public void mouseClicked(MouseEvent e) {
+        Label_Laporan.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
                 
-              //  Frame_Laporan Laporan = new Frame_Laporan();
-                //Laporan.setVisible(true);
-                //dispose();
-           // }
-        //});
+                Frame_Laporan Laporan = new Frame_Laporan();
+                Laporan.setVisible(true);
+                dispose();
+            }
+        });
     }
     
     @SuppressWarnings("unchecked")
