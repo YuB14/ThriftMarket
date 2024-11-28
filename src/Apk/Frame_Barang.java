@@ -74,14 +74,14 @@ public class Frame_Barang extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                int idkategori = rs.getInt("ID_Kategori");
+                int idbarang = rs.getInt("id_barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
                 int jumlahbarang = rs.getInt("Jumlah_Barang");
                 int harga = rs.getInt("Harga_Barang");
                 String deskripsi = rs.getString("Deskripsi_Barang");
 
-                Object[] rowData = {idkategori, namakategori, namabarang, jumlahbarang, harga, deskripsi};
+                Object[] rowData = {idbarang, namakategori, namabarang, jumlahbarang, harga, deskripsi};
                 model.addRow(rowData);
             }
 
