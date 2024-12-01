@@ -67,6 +67,7 @@ public class Frame_Laporan extends javax.swing.JFrame {
         Label_FrameLaporan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/UI/Logo Mythrift.png")).getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Label_IkonPencarian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

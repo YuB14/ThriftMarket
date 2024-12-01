@@ -77,6 +77,7 @@ public class Frame_Gudang extends javax.swing.JFrame {
         Label_FrameGudang = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/UI/Logo Mythrift.png")).getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LabelMenu_Dashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

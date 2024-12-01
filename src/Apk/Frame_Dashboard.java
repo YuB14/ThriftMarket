@@ -62,6 +62,7 @@ public class Frame_Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/UI/Logo Mythrift.png")).getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Label_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -75,7 +76,7 @@ public class Frame_Dashboard extends javax.swing.JFrame {
         getContentPane().add(Label_TextBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 330, 30));
 
         Tombol_LogOut.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Tombol_LogOut.setForeground(new java.awt.Color(0, 51, 102));
+        Tombol_LogOut.setForeground(new java.awt.Color(25, 69, 105));
         Tombol_LogOut.setText("Log Out");
         Tombol_LogOut.setToolTipText("");
         Tombol_LogOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));

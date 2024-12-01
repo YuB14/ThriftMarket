@@ -53,19 +53,23 @@ public class Frame_Register extends javax.swing.JFrame {
         Text_Username = new javax.swing.JTextField();
         Label_SignIn = new javax.swing.JLabel();
         J_Password = new javax.swing.JPasswordField();
-        Frame_Register = new javax.swing.JLabel();
+        Label_FrameRegister = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/UI/Logo Mythrift.png")).getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Ikon_NoTelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Ikon_NoTelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Phone.png"))); // NOI18N
-        getContentPane().add(Ikon_NoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 30, 30));
+        getContentPane().add(Ikon_NoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 40, 30));
 
+        Ikon_Username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Ikon_Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Male User.png"))); // NOI18N
-        getContentPane().add(Ikon_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 30, 30));
+        getContentPane().add(Ikon_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 40, 30));
 
+        Ikon_Password.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Ikon_Password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Password.png"))); // NOI18N
-        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 30, 30));
+        getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 40, 30));
 
         Check_ShowPassword.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
         Check_ShowPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,9 +79,9 @@ public class Frame_Register extends javax.swing.JFrame {
                 Check_ShowPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(Check_ShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
+        getContentPane().add(Check_ShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, 30));
 
-        Tombol_Register.setBackground(new java.awt.Color(0, 102, 153));
+        Tombol_Register.setBackground(new java.awt.Color(25, 69, 105));
         Tombol_Register.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         Tombol_Register.setForeground(new java.awt.Color(255, 255, 255));
         Tombol_Register.setText("Register");
@@ -87,23 +91,23 @@ public class Frame_Register extends javax.swing.JFrame {
                 Tombol_RegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(Tombol_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 100, 30));
+        getContentPane().add(Tombol_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 100, 30));
 
         Ikon_Pengguna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Ikon_Pengguna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Name Tag_2.png"))); // NOI18N
-        getContentPane().add(Ikon_Pengguna, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 40, 30));
+        getContentPane().add(Ikon_Pengguna, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 40, 30));
 
         Text_Role.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         Text_Role.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(Text_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 200, 30));
+        getContentPane().add(Text_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 200, 30));
 
         Text_NoTelp.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         Text_NoTelp.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(Text_NoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 200, 30));
+        getContentPane().add(Text_NoTelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 200, 30));
 
         Text_Username.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         Text_Username.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(Text_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 200, 30));
+        getContentPane().add(Text_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 200, 30));
 
         Label_SignIn.setFont(new java.awt.Font("Bookman Old Style", 1, 20)); // NOI18N
         Label_SignIn.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,14 +116,10 @@ public class Frame_Register extends javax.swing.JFrame {
 
         J_Password.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         J_Password.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(J_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 200, 30));
+        getContentPane().add(J_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 170, 30));
 
-        Frame_Register.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        Frame_Register.setForeground(new java.awt.Color(255, 255, 255));
-        Frame_Register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Register.png"))); // NOI18N
-        Frame_Register.setText("Pengguna");
-        Frame_Register.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        getContentPane().add(Frame_Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
+        Label_FrameRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Frame_Register.png"))); // NOI18N
+        getContentPane().add(Label_FrameRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 580));
 
         pack();
         setLocationRelativeTo(null);
@@ -195,12 +195,12 @@ public class Frame_Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Check_ShowPassword;
-    private javax.swing.JLabel Frame_Register;
     private javax.swing.JLabel Ikon_NoTelp;
     private javax.swing.JLabel Ikon_Password;
     private javax.swing.JLabel Ikon_Pengguna;
     private javax.swing.JLabel Ikon_Username;
     private javax.swing.JPasswordField J_Password;
+    private javax.swing.JLabel Label_FrameRegister;
     private javax.swing.JLabel Label_SignIn;
     private javax.swing.JTextField Text_NoTelp;
     private javax.swing.JTextField Text_Role;

@@ -46,6 +46,7 @@ public class Frame_Login extends javax.swing.JFrame {
         Frame_Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/UI/Logo Mythrift.png")).getImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Ikon_Username.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Male User.png"))); // NOI18N
@@ -55,7 +56,7 @@ public class Frame_Login extends javax.swing.JFrame {
         Ikon_Password.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Password.png"))); // NOI18N
         getContentPane().add(Ikon_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 280, 30, 30));
 
-        Tombol_SignIn.setBackground(new java.awt.Color(0, 102, 153));
+        Tombol_SignIn.setBackground(new java.awt.Color(25, 69, 105));
         Tombol_SignIn.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
         Tombol_SignIn.setForeground(new java.awt.Color(255, 255, 255));
         Tombol_SignIn.setText("Sign In");
@@ -133,8 +134,9 @@ public class Frame_Login extends javax.swing.JFrame {
 
             if (rs.next()) {
                 dispose();
-                Frame_Dashboard dashboard = new Frame_Dashboard();
-                dashboard.show();
+                MenuUtama menuutama = new MenuUtama();
+                menuutama.show();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Username or Password is wrong");
                 Text_Username.setText("");
