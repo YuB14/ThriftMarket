@@ -463,33 +463,64 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
     private void Tombol_TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_TambahActionPerformed
         // TODO add your handling code here:
-        String namaPelanggan = Text_NamaPembeli.getText();
-        String barang = (String) Combo_NamaBarang.getSelectedItem();
-        Date tanggal = J_TanggalTransaksi.getDate();
-        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
-        String totalBayar = Text_TotalHarga.getText();
+        String namapembeli = Text_NamaPembeli.getText();
+        String namabarang = (String) Combo_NamaBarang.getSelectedItem();
+        Date tanggaltransaksi = J_TanggalTransaksi.getDate();
+        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
+        String totalharga = Text_TotalHarga.getText();
 
 //        validasi wajib di isi
-        if (jumlahBeli == 0 || tanggal == null || namaPelanggan.isEmpty() || barang.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "semua kolom harus terisi", "peringatan", JOptionPane.ERROR_MESSAGE);
+        if (jumlahbarang == 0 || tanggaltransaksi == null || namapembeli.isEmpty() || namabarang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Terisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         try {
-            Connection conn = database.getConnection();
-            java.sql.Date sqlDate = new java.sql.Date(tanggal.getTime());
-            String[] splits = barang.split(" -- ");
+            Connection con = database.getConnection();
+            java.sql.Date sqlDate = new java.sql.Date(tanggaltransaksi.getTime());
+            String[] splits = namabarang.split(" -- "); // pastikan formatnya benar
 
-            String sql = "INSERT INTO tabel_transaksi (ID_Barang, tanggal_transaksi, nama_pelanggan, jumlah_beli, total_bayar) VALUES (?,?,?,?,?)";
-            PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, Integer.parseInt(splits[0]));
+            int idbarang = Integer.parseInt(splits[0]); // Ambil ID barang dari split
+            int jumlahbarangdiambil = jumlahbarang;
+
+            // Cek jumlah barang di tabel_barang
+            String cekstokSql = "SELECT Jumlah_Barang FROM tabel_barang WHERE ID_Barang = ?";
+            PreparedStatement cekstokSt = con.prepareStatement(cekstokSql);
+            cekstokSt.setInt(1, idbarang);
+            ResultSet rs = cekstokSt.executeQuery();
+
+            if (rs.next()) {
+                int stokTersedia = rs.getInt("Jumlah_Barang");
+                if (stokTersedia < jumlahbarangdiambil) {
+                    JOptionPane.showMessageDialog(this, "Jumlah Barang yang Diminta Melebihi Stok yang Tersedia!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Barang Tidak Ditemukan!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            rs.close();
+            cekstokSt.close();
+
+            // Lanjutkan proses insert ke tabel_transaksi
+            String sql = "INSERT INTO tabel_transaksi (ID_Barang, Tanggal_Transaksi, Nama_Pembeli, Jumlah_Barang, Total_Harga) VALUES (?,?,?,?,?)";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, idbarang);
             st.setDate(2, sqlDate);
-            st.setString(3, namaPelanggan);
-            st.setInt(4, jumlahBeli);
-            st.setInt(5, Integer.parseInt(totalBayar));
+            st.setString(3, namapembeli);
+            st.setInt(4, jumlahbarangdiambil);
+            st.setInt(5, Integer.parseInt(totalharga));
 
             int rowInserted = st.executeUpdate();
             if (rowInserted > 0) {
+                // Kurangi jumlah stok di tabel_barang
+                String updateStokSql = "UPDATE tabel_barang SET Jumlah_Barang = Jumlah_Barang - ? WHERE ID_Barang = ?";
+                PreparedStatement updateStokSt = con.prepareStatement(updateStokSql);
+                updateStokSt.setInt(1, jumlahbarangdiambil);
+                updateStokSt.setInt(2, idbarang);
+                updateStokSt.executeUpdate();
+                updateStokSt.close();
+
                 JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
                 resetForm(); // Pastikan method ini ada dan berfungsi.
                 DataTransaksi(); // Pastikan method ini memuat ulang data.
@@ -497,41 +528,42 @@ public class Panel_Kasir extends javax.swing.JPanel {
             st.close();
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Jumlah dan Harga harus berupa angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Jumlah dan Harga Harus Berupa Angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
         }
+
     }//GEN-LAST:event_Tombol_TambahActionPerformed
 
     private void Tombol_PerbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_PerbaruiActionPerformed
         // TODO add your handling code here:
         String id_transaksi = Text_ID_Transaksi.getText();
-        String namaPelanggan = Text_NamaPembeli.getText();
-        String barang = (String) Combo_NamaBarang.getSelectedItem();
-        Date tanggal = J_TanggalTransaksi.getDate();
-        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
-        String totalBayar = Text_TotalHarga.getText();
+        String namapembeli = Text_NamaPembeli.getText();
+        String namabarang = (String) Combo_NamaBarang.getSelectedItem();
+        Date tanggaltransaksi = J_TanggalTransaksi.getDate();
+        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
+        String totalharga = Text_TotalHarga.getText();
 
 //        validasi wajib di isi
-        if (jumlahBeli == 0 || tanggal == null || namaPelanggan.isEmpty() || barang.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "semua kolom harus terisi", "peringatan", JOptionPane.ERROR_MESSAGE);
+        if (jumlahbarang == 0 || tanggaltransaksi == null || namapembeli.isEmpty() || namabarang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Terisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
-            Connection conn = database.getConnection();
-            java.sql.Date sqlDate = new java.sql.Date(tanggal.getTime());
-            String[] splits = barang.split(" -- ");
+            Connection con = database.getConnection();
+            java.sql.Date sqlDate = new java.sql.Date(tanggaltransaksi.getTime());
+            String[] splits = namabarang.split(" -- ");
 
 //            String sql = "INSERT INTO tabel_transaksi (ID_Barang, tanggal_transaksi, nama_pelanggan, jumlah_beli, total_bayar) VALUES (?,?,?,?,?)";
-            String sql = "UPDATE tabel_transaksi SET ID_Barang=?, tanggal_transaksi=?, nama_pelanggan=?, jumlah_beli=?, total_bayar=? WHERE ID_Transaksi=?";
-            PreparedStatement st = conn.prepareStatement(sql);
+            String sql = "UPDATE tabel_transaksi SET ID_Barang=?, Tanggal_Transaksi=?, Nama_Pelanggan=?, Jumlah_Barang=?, Total_Harga=? WHERE ID_Transaksi=?";
+            PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(splits[0]));
             st.setDate(2, sqlDate);
-            st.setString(3, namaPelanggan);
-            st.setInt(4, jumlahBeli);
-            st.setInt(5, Integer.parseInt(totalBayar));
+            st.setString(3, namapembeli);
+            st.setInt(4, jumlahbarang);
+            st.setInt(5, Integer.parseInt(totalharga));
             st.setInt(6, Integer.parseInt(id_transaksi));
 
             int rowInserted = st.executeUpdate();
@@ -543,9 +575,9 @@ public class Panel_Kasir extends javax.swing.JPanel {
             st.close();
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Jumlah dan Harga harus berupa angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Jumlah dan Harga Harus Berupa Angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Gagal Memperbarui Data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_Tombol_PerbaruiActionPerformed
@@ -557,36 +589,33 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
         // Validasi jika tidak ada baris yang dipilih
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Pilih Data Yang Ingin Dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        //if (selectedRow == -1) {
-        //  JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-        //return;
 
         // Konfirmasi sebelum penghapusan
-        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Menghapus Data Ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
 
         // Ambil ID transaksi dari tabel
-        int idTransaksi = (int) model.getValueAt(selectedRow, 0);
+        int id_transaksi = (int) model.getValueAt(selectedRow, 0);
 
         try {
             // Koneksi ke database
-            Connection conn = database.getConnection();
+            Connection con = database.getConnection();
             String sql = "DELETE FROM tabel_transaksi WHERE ID_Transaksi = ?";
-            PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, idTransaksi);
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, id_transaksi);
 
             // Eksekusi query penghapusan
             int rowsDeleted = st.executeUpdate();
             if (rowsDeleted > 0) {
-                JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
+                JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus.");
                 DataTransaksi(); // Memuat ulang data tabel
             } else {
-                JOptionPane.showMessageDialog(this, "Gagal menghapus data.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Gagal Menghapus Data.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
             st.close();
@@ -598,68 +627,68 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
     private void Spinner_JumlahBarangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Spinner_JumlahBarangStateChanged
         // TODO add your handling code here:
-        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
-        String barang = (String) Combo_NamaBarang.getSelectedItem();
+        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
+        String namabarang = (String) Combo_NamaBarang.getSelectedItem();
 
-        String[] splits = barang.split(" -- ");
+        String[] splits = namabarang.split(" -- ");
         Integer hasil = 0;
 
-        if (barang != null && jumlahBeli != 0) {
-            hasil = jumlahBeli * Integer.parseInt(splits[2]);
+        if (namabarang != null && jumlahbarang != 0) {
+            hasil = jumlahbarang * Integer.parseInt(splits[2]);
         }
         Text_TotalHarga.setText(hasil.toString());
     }//GEN-LAST:event_Spinner_JumlahBarangStateChanged
 
     private void Combo_NamaBarangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_NamaBarangItemStateChanged
         // TODO add your handling code here:
-        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
-        String barang = (String) Combo_NamaBarang.getSelectedItem();
+        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
+        String namabarang = (String) Combo_NamaBarang.getSelectedItem();
 
-        String[] splits = barang.split(" -- ");
+        String[] splits = namabarang.split(" -- ");
         Integer hasil = 0;
 
-        if (barang != null && jumlahBeli != 0) {
-            hasil = jumlahBeli * Integer.parseInt(splits[2]);
+        if (namabarang != null && jumlahbarang != 0) {
+            hasil = jumlahbarang * Integer.parseInt(splits[2]);
         }
-       Text_TotalHarga.setText(hasil.toString());
+        Text_TotalHarga.setText(hasil.toString());
     }//GEN-LAST:event_Combo_NamaBarangItemStateChanged
 
     private void Tabel_TransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_TransaksiMouseClicked
         // TODO add your handling code here:
-            int selectedRow = Tabel_Transaksi.getSelectedRow();
+        int selectedRow = Tabel_Transaksi.getSelectedRow();
 
 //        jJumlah_Beli.setValue(10);
 //        "Id transaksi", "Nama pelanggan", "Barang", "Tanggal", "Jumlah", "Total"
         if (selectedRow != -1) {
-            String Idtransaksi = Tabel_Transaksi.getValueAt(selectedRow, 0).toString();
-            String namaPelanggan = Tabel_Transaksi.getValueAt(selectedRow, 1).toString();
-            String barang = Tabel_Transaksi.getValueAt(selectedRow, 2).toString();
-            String jumlahBeli = Tabel_Transaksi.getValueAt(selectedRow, 4).toString();
-            String totalBayar = Tabel_Transaksi.getValueAt(selectedRow, 5).toString();
+            String idtransaksi = Tabel_Transaksi.getValueAt(selectedRow, 0).toString();
+            String namapembeli = Tabel_Transaksi.getValueAt(selectedRow, 1).toString();
+            String namabarang = Tabel_Transaksi.getValueAt(selectedRow, 2).toString();
+            String jumlahbarang = Tabel_Transaksi.getValueAt(selectedRow, 4).toString();
+            String totalharga = Tabel_Transaksi.getValueAt(selectedRow, 5).toString();
 
-            Text_ID_Transaksi.setText(Idtransaksi);
-            Text_NamaPembeli.setText(namaPelanggan);
-            Combo_NamaBarang.addItem(barang);
-            Combo_NamaBarang.setSelectedItem(barang);
+            Text_ID_Transaksi.setText(idtransaksi);
+            Text_NamaPembeli.setText(namapembeli);
+            Combo_NamaBarang.addItem(namabarang);
+            Combo_NamaBarang.setSelectedItem(namabarang);
 
             try {
                 String tanggal = Tabel_Transaksi.getValueAt(selectedRow, 3).toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Format tanggal sesuai data
+                SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD"); // Format tanggal sesuai data
                 Date date = sdf.parse(tanggal); // Konversi String ke Date
                 J_TanggalTransaksi.setDate(date);         // Set nilai ke JDateChooser
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Format tanggal tidak valid!");
+                JOptionPane.showMessageDialog(null, "Format Tanggal Tidak Valid!");
             }
-            Text_TotalHarga.setText(totalBayar);
+            Text_TotalHarga.setText(totalharga);
 
-            Object jumlahBeliObj = Tabel_Transaksi.getValueAt(selectedRow, 4);
-            if (jumlahBeliObj instanceof Integer) {
-                Spinner_JumlahBarang.setValue((Integer) jumlahBeliObj);
-            } else if (jumlahBeliObj instanceof Double) {
-                Spinner_JumlahBarang.setValue((Double) jumlahBeliObj);
+            Object jumlahbarangObj = Tabel_Transaksi.getValueAt(selectedRow, 4);
+            if (jumlahbarangObj instanceof Integer) {
+                Spinner_JumlahBarang.setValue((Integer) jumlahbarangObj);
+            } else if (jumlahbarangObj instanceof Double) {
+                Spinner_JumlahBarang.setValue((Double) jumlahbarangObj);
             } else {
-                JOptionPane.showMessageDialog(null, "Jumlah beli tidak valid.");
+                JOptionPane.showMessageDialog(null, "Jumlah Beli Tidak Valid.");
             }
         }
 
@@ -709,24 +738,24 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
     private void DataBarang() {
         try {
-            Connection conn = database.getConnection();
-            if (conn != null) {
-                String sql = "SELECT Nama_Barang,Harga_Barang,id_barang FROM tabel_barang";
-                PreparedStatement stat = conn.prepareStatement(sql);
+            Connection con = database.getConnection();
+            if (con != null) {
+                String sql = "SELECT Nama_Barang,Harga_Barang,ID_Barang FROM tabel_barang";
+                PreparedStatement stat = con.prepareStatement(sql);
                 ResultSet rs = stat.executeQuery();
 
                 Combo_NamaBarang.removeAllItems();
                 Combo_NamaBarang.addItem("--- pilih barang ---");
 
                 while (rs.next()) {
-                    String item = rs.getInt("id_barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
+                    String item = rs.getInt("ID_Barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
                     Combo_NamaBarang.addItem(item);
                 }
 
                 rs.close();
                 stat.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Gagal koneksi ke database");
+                JOptionPane.showMessageDialog(null, "Gagal Koneksi Ke Database");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
@@ -738,29 +767,29 @@ public class Panel_Kasir extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) Tabel_Transaksi.getModel();
         model.setRowCount(0);
         try {
-            Connection conn = database.getConnection();
-            if (conn != null) {
-                String sql = "SELECT * FROM tabel_transaksi INNER JOIN tabel_barang ON tabel_transaksi.ID_Barang = tabel_barang.id_barang";
-                PreparedStatement stat = conn.prepareStatement(sql);
+            Connection con = database.getConnection();
+            if (con != null) {
+                String sql = "SELECT * FROM tabel_transaksi INNER JOIN tabel_barang ON tabel_transaksi.ID_Barang = tabel_barang.ID_Barang";
+                PreparedStatement stat = con.prepareStatement(sql);
                 ResultSet rs = stat.executeQuery();
 
                 while (rs.next()) {
                     int idtransaksi = rs.getInt("ID_Transaksi");
-                    String namabarang = rs.getString("id_barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
+                    String namabarang = rs.getString("ID_Barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
 
-                    String tanggaltransaksi = rs.getString("tanggal_transaksi");
-                    String namapelanggan = rs.getString("nama_pelanggan");
-                    int jumlahbeli = rs.getInt("jumlah_beli");
-                    int totalbayar = rs.getInt("total_bayar");
+                    String tanggaltransaksi = rs.getString("Tanggal_Transaksi");
+                    String namapembeli = rs.getString("Nama_Pembeli");
+                    int jumlahbarang = rs.getInt("Jumlah_Barang");
+                    int totalharga = rs.getInt("Total_Harga");
 
-                    Object[] rowData = {idtransaksi, namapelanggan, namabarang, tanggaltransaksi, jumlahbeli, totalbayar};
+                    Object[] rowData = {idtransaksi, namapembeli, namabarang, tanggaltransaksi, jumlahbarang, totalharga};
                     model.addRow(rowData);
                 }
 
                 rs.close();
                 stat.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Gagal koneksi ke database");
+                JOptionPane.showMessageDialog(null, "Gagal Koneksi Ke Database");
             }
 
         } catch (Exception e) {

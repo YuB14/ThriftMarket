@@ -116,7 +116,7 @@ public class Frame_Login extends javax.swing.JFrame {
     private void Tombol_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_SignInActionPerformed
 
         String Surl, Suname, Spass;
-        Surl = "jdbc:MySQL://localhost:3306/thrift";
+        Surl = "jdbc:MySQL://localhost:3306/mythrift";
         Suname = "root";
         Spass = "";
         try {

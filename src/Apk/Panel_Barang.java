@@ -530,9 +530,9 @@ public class Panel_Barang extends javax.swing.JPanel {
             }
             st.close();
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Jumlah dan Harga harus berupa angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Jumlah dan Harga Harus Berupa Angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
         }    
     }//GEN-LAST:event_Tombol_TambahActionPerformed
@@ -545,9 +545,9 @@ public class Panel_Barang extends javax.swing.JPanel {
             return;
         }
 
-        // Ambil ID_Kategori dari kolom yang sesuai
+        // Ambil ID_Barang dari kolom yang sesuai
         int indexKolomID = 0; // Pastikan kolom ke-0 adalah kolom ID_Kategori
-        String idkategori = Tabel_Data.getValueAt(selectedRow, indexKolomID).toString();
+        String idbarang = Tabel_Data.getValueAt(selectedRow, indexKolomID).toString();
 
         String namakategori = Text_NamaKategori.getText();
         String namabarang = Text_NamaBarang.getText();
@@ -565,14 +565,14 @@ public class Panel_Barang extends javax.swing.JPanel {
             int harga = Integer.parseInt(hargabarang);
 
             // Query SQL untuk update
-            String sql = "UPDATE tabel_barang SET Nama_Kategori =?, Nama_Barang=?, Jumlah_Barang=?, Harga_Barang=?, Deskripsi_Barang=? WHERE id_barang=?";
+            String sql = "UPDATE tabel_barang SET Nama_Kategori =?, Nama_Barang=?, Jumlah_Barang=?, Harga_Barang=?, Deskripsi_Barang=? WHERE ID_Barang=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, namakategori);
             st.setString(2, namabarang);
             st.setInt(3, jumlah);
             st.setInt(4, harga);
             st.setString(5, deskripsibarang);
-            st.setString(6, idkategori); // Set parameter ID_Kategori
+            st.setString(6, idbarang); // Set parameter ID_Kategori
 
             int rowUpdated = st.executeUpdate();
             if (rowUpdated > 0) {
@@ -580,7 +580,7 @@ public class Panel_Barang extends javax.swing.JPanel {
                 MengambilData(); // Refresh data tabel
                 resetForm(); // Reset input form
             } else {
-                JOptionPane.showMessageDialog(this, "Tidak ada data yang diperbarui. Periksa id bategori.");
+                JOptionPane.showMessageDialog(this, "Tidak ada data yang diperbarui. Periksa ID_Barang.");
             }
 
             st.close();
@@ -609,16 +609,16 @@ public class Panel_Barang extends javax.swing.JPanel {
 
         // Ambil ID_Kategori dari kolom yang sesuai
         int indexKolomID = 0; // Pastikan kolom ke-0 adalah kolom ID_Kategori
-        String idkategori = Tabel_Data.getValueAt(selectedRow, indexKolomID).toString();
+        String idbarang = Tabel_Data.getValueAt(selectedRow, indexKolomID).toString();
         
         int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda Yakin Ingin Menghapus Data Ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         
         if(confirm == JOptionPane.YES_OPTION) {
             
         try {
-            String sql = "DELETE FROM tabel_barang WHERE id_barang=?";
+            String sql = "DELETE FROM tabel_barang WHERE ID_Barang=?";
             PreparedStatement st = con. prepareStatement(sql);
-            st.setString(1, idkategori);
+            st.setString(1, idbarang);
             
             int rowDelete = st.executeUpdate();
             if(rowDelete > 0) {
@@ -680,14 +680,14 @@ public class Panel_Barang extends javax.swing.JPanel {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                int idkategori = rs.getInt("id_barang");
+                int idbarang = rs.getInt("ID_Barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
                 int jumlahbarang = rs.getInt("Jumlah_Barang");
                 int harga = rs.getInt("Harga_Barang");
                 String deskripsi = rs.getString("Deskripsi_Barang");
 
-                Object[] rowData = {idkategori, namakategori, namabarang, jumlahbarang, harga, deskripsi};
+                Object[] rowData = {idbarang, namakategori, namabarang, jumlahbarang, harga, deskripsi};
                 model.addRow(rowData);
             }
 
@@ -737,14 +737,14 @@ public class Panel_Barang extends javax.swing.JPanel {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                int idkategori = rs.getInt("id_barang");
+                int idbarang = rs.getInt("ID_Barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
                 int jumlahbarang = rs.getInt("Jumlah_Barang");
                 int harga = rs.getInt("Harga_Barang");
                 String deskripsi = rs.getString("Deskripsi_Barang");
 
-                Object[] rowData = {idkategori, namakategori, namabarang, jumlahbarang, harga, deskripsi};
+                Object[] rowData = {idbarang, namakategori, namabarang, jumlahbarang, harga, deskripsi};
                 model.addRow(rowData);
             }
 
