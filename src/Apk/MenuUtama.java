@@ -22,14 +22,11 @@ public class MenuUtama extends javax.swing.JFrame {
         Menu_Barang = new Cob.PanelCustom();
         Ikon_Barang = new javax.swing.JLabel();
         Text_Barang = new javax.swing.JLabel();
-        Menu_LaporanMasuk = new Cob.PanelCustom();
-        Ikon_LaporanMasuk = new javax.swing.JLabel();
-        Text_LaporanMasuk = new javax.swing.JLabel();
         Menu_Kasir = new Cob.PanelCustom();
         Ikon_Kasir = new javax.swing.JLabel();
         Text_Kasir = new javax.swing.JLabel();
-        Menu_LaporanKeluar = new Cob.PanelCustom();
-        Ikon_LaporanKeluar = new javax.swing.JLabel();
+        Menu_Laporan = new Cob.PanelCustom();
+        Ikon_Laporan = new javax.swing.JLabel();
         Text_LaporanKeluar = new javax.swing.JLabel();
         Panel_LogOut = new Cob.PanelCustom();
         Tombol_LogOut = new javax.swing.JButton();
@@ -98,33 +95,6 @@ public class MenuUtama extends javax.swing.JFrame {
         Text_Barang.setText("BARANG");
         Menu_Barang.add(Text_Barang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 66, 170, 20));
 
-        Menu_LaporanMasuk.setBackground(new java.awt.Color(255, 255, 255));
-        Menu_LaporanMasuk.setRoundBottomLeft(40);
-        Menu_LaporanMasuk.setRoundBottomRight(40);
-        Menu_LaporanMasuk.setRoundTopLeft(40);
-        Menu_LaporanMasuk.setRoundTopRight(40);
-        Menu_LaporanMasuk.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Ikon_LaporanMasuk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Ikon_LaporanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Gudang (1)_1.png"))); // NOI18N
-        Ikon_LaporanMasuk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Ikon_LaporanMasuk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanMasukMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanMasukMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanMasukMouseExited(evt);
-            }
-        });
-        Menu_LaporanMasuk.add(Ikon_LaporanMasuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 80));
-
-        Text_LaporanMasuk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Text_LaporanMasuk.setText("LAPORAN MASUK");
-        Menu_LaporanMasuk.add(Text_LaporanMasuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 70, 130, -1));
-
         Menu_Kasir.setBackground(new java.awt.Color(255, 255, 255));
         Menu_Kasir.setRoundBottomLeft(40);
         Menu_Kasir.setRoundBottomRight(40);
@@ -152,32 +122,32 @@ public class MenuUtama extends javax.swing.JFrame {
         Text_Kasir.setText("KASIR");
         Menu_Kasir.add(Text_Kasir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, 150, 10));
 
-        Menu_LaporanKeluar.setBackground(new java.awt.Color(255, 255, 255));
-        Menu_LaporanKeluar.setRoundBottomLeft(40);
-        Menu_LaporanKeluar.setRoundBottomRight(40);
-        Menu_LaporanKeluar.setRoundTopLeft(40);
-        Menu_LaporanKeluar.setRoundTopRight(40);
-        Menu_LaporanKeluar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Menu_Laporan.setBackground(new java.awt.Color(255, 255, 255));
+        Menu_Laporan.setRoundBottomLeft(40);
+        Menu_Laporan.setRoundBottomRight(40);
+        Menu_Laporan.setRoundTopLeft(40);
+        Menu_Laporan.setRoundTopRight(40);
+        Menu_Laporan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Ikon_LaporanKeluar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Ikon_LaporanKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuLaporan.png"))); // NOI18N
-        Ikon_LaporanKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Ikon_LaporanKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
+        Ikon_Laporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Ikon_Laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/MenuLaporan.png"))); // NOI18N
+        Ikon_Laporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ikon_Laporan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanKeluarMouseClicked(evt);
+                Ikon_LaporanMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanKeluarMouseEntered(evt);
+                Ikon_LaporanMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Ikon_LaporanKeluarMouseExited(evt);
+                Ikon_LaporanMouseExited(evt);
             }
         });
-        Menu_LaporanKeluar.add(Ikon_LaporanKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 70));
+        Menu_Laporan.add(Ikon_Laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 70));
 
         Text_LaporanKeluar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Text_LaporanKeluar.setText("LAPORAN KELUAR");
-        Menu_LaporanKeluar.add(Text_LaporanKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 66, 110, 20));
+        Text_LaporanKeluar.setText("LAPORAN");
+        Menu_Laporan.add(Text_LaporanKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 66, 110, 20));
 
         Panel_LogOut.setBackground(new java.awt.Color(255, 255, 255));
         Panel_LogOut.setRoundBottomLeft(40);
@@ -230,9 +200,8 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGroup(Panel_SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Menu_Dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Menu_Barang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Menu_LaporanMasuk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Menu_Kasir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Menu_LaporanKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Menu_Laporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_SidebarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,12 +218,10 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menu_Barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Menu_LaporanMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menu_Kasir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Menu_LaporanKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(Menu_Laporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(Panel_LogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -332,25 +299,15 @@ public class MenuUtama extends javax.swing.JFrame {
         Menu_Kasir.setBackground(new Color (255, 255, 255));
     }//GEN-LAST:event_Ikon_KasirMouseExited
 
-    private void Ikon_LaporanMasukMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMasukMouseEntered
+    private void Ikon_LaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMouseEntered
         // TODO add your handling code here:
-        Menu_LaporanMasuk.setBackground(new Color (153, 153, 153));
-    }//GEN-LAST:event_Ikon_LaporanMasukMouseEntered
+        Menu_Laporan.setBackground(new Color (153, 153, 153));
+    }//GEN-LAST:event_Ikon_LaporanMouseEntered
 
-    private void Ikon_LaporanMasukMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMasukMouseExited
+    private void Ikon_LaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMouseExited
         // TODO add your handling code here:
-        Menu_LaporanMasuk.setBackground(new Color (255, 255, 255));
-    }//GEN-LAST:event_Ikon_LaporanMasukMouseExited
-
-    private void Ikon_LaporanKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanKeluarMouseEntered
-        // TODO add your handling code here:
-        Menu_LaporanKeluar.setBackground(new Color (153, 153, 153));
-    }//GEN-LAST:event_Ikon_LaporanKeluarMouseEntered
-
-    private void Ikon_LaporanKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanKeluarMouseExited
-        // TODO add your handling code here:
-        Menu_LaporanKeluar.setBackground(new Color (255, 255, 255));
-    }//GEN-LAST:event_Ikon_LaporanKeluarMouseExited
+        Menu_Laporan.setBackground(new Color (255, 255, 255));
+    }//GEN-LAST:event_Ikon_LaporanMouseExited
 
     private void Tombol_LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_LogOutActionPerformed
         // TODO add your handling code here:
@@ -389,36 +346,17 @@ public class MenuUtama extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Ikon_BarangMouseClicked
 
-    private void Ikon_LaporanMasukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMasukMouseClicked
+    private void Ikon_LaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanMouseClicked
         // TODO add your handling code here:
-        Menu_LaporanMasuk.setBackground(new Color (153, 153, 153));
+        Menu_Laporan.setBackground(new Color (153, 153, 153));
         
         Panel_Frame.removeAll();
-        Panel_Frame.add(new Panel_LaporanMasuk());
+        Panel_Frame.add(new Panel_Laporan());
         Panel_Frame.repaint();
         Panel_Frame.revalidate();
         
-        Panel_Navigasi.removeAll();
-        Panel_Navigasi.add(new NavigasiLaporanMasuk());
-        Panel_Navigasi.repaint();
-        Panel_Navigasi.revalidate();
-        
-    }//GEN-LAST:event_Ikon_LaporanMasukMouseClicked
 
-    private void Ikon_LaporanKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_LaporanKeluarMouseClicked
-        // TODO add your handling code here:
-        Menu_LaporanKeluar.setBackground(new Color (153, 153, 153));
-        
-        Panel_Frame.removeAll();
-        Panel_Frame.add(new Panel_LaporanKeluar());
-        Panel_Frame.repaint();
-        Panel_Frame.revalidate();
-        
-        Panel_Navigasi.removeAll();
-        Panel_Navigasi.add(new NavigasiLaporanMasuk());
-        Panel_Navigasi.repaint();
-        Panel_Navigasi.revalidate();
-    }//GEN-LAST:event_Ikon_LaporanKeluarMouseClicked
+    }//GEN-LAST:event_Ikon_LaporanMouseClicked
 
     private void Ikon_KasirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_KasirMouseClicked
         // TODO add your handling code here:
@@ -450,13 +388,11 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JLabel Ikon_Barang;
     private javax.swing.JLabel Ikon_Dashboard;
     private javax.swing.JLabel Ikon_Kasir;
-    private javax.swing.JLabel Ikon_LaporanKeluar;
-    private javax.swing.JLabel Ikon_LaporanMasuk;
+    private javax.swing.JLabel Ikon_Laporan;
     private Cob.PanelCustom Menu_Barang;
     private Cob.PanelCustom Menu_Dashboard;
     private Cob.PanelCustom Menu_Kasir;
-    private Cob.PanelCustom Menu_LaporanKeluar;
-    private Cob.PanelCustom Menu_LaporanMasuk;
+    private Cob.PanelCustom Menu_Laporan;
     private javax.swing.JPanel Panel_Frame;
     private Cob.PanelCustom Panel_LogOut;
     private javax.swing.JPanel Panel_Navigasi;
@@ -465,7 +401,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JLabel Text_Dashboard;
     private javax.swing.JLabel Text_Kasir;
     private javax.swing.JLabel Text_LaporanKeluar;
-    private javax.swing.JLabel Text_LaporanMasuk;
     private javax.swing.JButton Tombol_LogOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

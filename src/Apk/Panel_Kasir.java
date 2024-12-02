@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class Panel_Kasir extends javax.swing.JPanel {
 
     DefaultTableModel model;
-    private Connection conn;
+    private Connection con;
 
     public Panel_Kasir() {
         initComponents();
@@ -33,11 +34,11 @@ public class Panel_Kasir extends javax.swing.JPanel {
     private void initComponents() {
 
         Panel_ID_Kategori = new Cob.PanelCustom();
-        Text_ID_Kategori = new javax.swing.JTextField();
+        Text_ID_Transaksi = new javax.swing.JTextField();
         Panel_NamaPembeli = new Cob.PanelCustom();
         Text_NamaPembeli = new javax.swing.JTextField();
         Panel_NamaBarang = new Cob.PanelCustom();
-        Text_NamaBarang = new javax.swing.JComboBox<>();
+        Combo_NamaBarang = new javax.swing.JComboBox<>();
         Panel_TanggalTransaksi = new Cob.PanelCustom();
         J_TanggalTransaksi = new com.toedter.calendar.JDateChooser();
         Panel_JumlahHarga = new Cob.PanelCustom();
@@ -69,7 +70,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_ID_Kategori.setRoundTopLeft(40);
         Panel_ID_Kategori.setRoundTopRight(40);
 
-        Text_ID_Kategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Text_ID_Transaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_ID_KategoriLayout = new javax.swing.GroupLayout(Panel_ID_Kategori);
         Panel_ID_Kategori.setLayout(Panel_ID_KategoriLayout);
@@ -77,14 +78,14 @@ public class Panel_Kasir extends javax.swing.JPanel {
             Panel_ID_KategoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ID_KategoriLayout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(Text_ID_Kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Text_ID_Transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
         Panel_ID_KategoriLayout.setVerticalGroup(
             Panel_ID_KategoriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_ID_KategoriLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Text_ID_Kategori, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(Text_ID_Transaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -119,11 +120,10 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_NamaBarang.setRoundTopLeft(40);
         Panel_NamaBarang.setRoundTopRight(40);
 
-        Text_NamaBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Text_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_NamaBarang.addItemListener(new java.awt.event.ItemListener() {
+        Combo_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Combo_NamaBarang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                Text_NamaBarangItemStateChanged(evt);
+                Combo_NamaBarangItemStateChanged(evt);
             }
         });
 
@@ -133,14 +133,14 @@ public class Panel_Kasir extends javax.swing.JPanel {
             Panel_NamaBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_NamaBarangLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(Text_NamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 994, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Combo_NamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 994, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel_NamaBarangLayout.setVerticalGroup(
             Panel_NamaBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_NamaBarangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Text_NamaBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(Combo_NamaBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -295,6 +295,11 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Tombol_Batal.setText("Batal");
         Tombol_Batal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_Batal.setContentAreaFilled(false);
+        Tombol_Batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tombol_BatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_BatalLayout = new javax.swing.GroupLayout(Panel_Batal);
         Panel_Batal.setLayout(Panel_BatalLayout);
@@ -350,9 +355,14 @@ public class Panel_Kasir extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabel_Transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabel_TransaksiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabel_Transaksi);
 
-        Label_ID_Kategori.setText("ID_Kategori");
+        Label_ID_Kategori.setText("ID_Transaksi");
 
         Label_NamaPembeli.setText("Nama Pembeli");
 
@@ -453,30 +463,30 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
     private void Tombol_TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_TambahActionPerformed
         // TODO add your handling code here:
-        String namapembeli = Text_NamaPembeli.getText();
-        String namabarang = (String) Text_NamaBarang.getSelectedItem();
+        String namaPelanggan = Text_NamaPembeli.getText();
+        String barang = (String) Combo_NamaBarang.getSelectedItem();
         Date tanggal = J_TanggalTransaksi.getDate();
-        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
-        String totalharga = Text_TotalHarga.getText();
+        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
+        String totalBayar = Text_TotalHarga.getText();
 
 //        validasi wajib di isi
-        if (jumlahbarang == 0 || tanggal == null || namapembeli.isEmpty() || namabarang.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Semua Kolom Harus Terisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        if (jumlahBeli == 0 || tanggal == null || namaPelanggan.isEmpty() || barang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "semua kolom harus terisi", "peringatan", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         try {
             Connection conn = database.getConnection();
             java.sql.Date sqlDate = new java.sql.Date(tanggal.getTime());
-            String[] splits = namabarang.split(" -- ");
+            String[] splits = barang.split(" -- ");
 
             String sql = "INSERT INTO tabel_transaksi (ID_Barang, tanggal_transaksi, nama_pelanggan, jumlah_beli, total_bayar) VALUES (?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(splits[0]));
             st.setDate(2, sqlDate);
-            st.setString(3, namapembeli);
-            st.setInt(4, jumlahbarang);
-            st.setInt(5, Integer.parseInt(totalharga));
+            st.setString(3, namaPelanggan);
+            st.setInt(4, jumlahBeli);
+            st.setInt(5, Integer.parseInt(totalBayar));
 
             int rowInserted = st.executeUpdate();
             if (rowInserted > 0) {
@@ -489,13 +499,55 @@ public class Panel_Kasir extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Jumlah dan Harga harus berupa angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_Tombol_TambahActionPerformed
 
     private void Tombol_PerbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_PerbaruiActionPerformed
         // TODO add your handling code here:
+        String id_transaksi = Text_ID_Transaksi.getText();
+        String namaPelanggan = Text_NamaPembeli.getText();
+        String barang = (String) Combo_NamaBarang.getSelectedItem();
+        Date tanggal = J_TanggalTransaksi.getDate();
+        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
+        String totalBayar = Text_TotalHarga.getText();
+
+//        validasi wajib di isi
+        if (jumlahBeli == 0 || tanggal == null || namaPelanggan.isEmpty() || barang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "semua kolom harus terisi", "peringatan", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            Connection conn = database.getConnection();
+            java.sql.Date sqlDate = new java.sql.Date(tanggal.getTime());
+            String[] splits = barang.split(" -- ");
+
+//            String sql = "INSERT INTO tabel_transaksi (ID_Barang, tanggal_transaksi, nama_pelanggan, jumlah_beli, total_bayar) VALUES (?,?,?,?,?)";
+            String sql = "UPDATE tabel_transaksi SET ID_Barang=?, tanggal_transaksi=?, nama_pelanggan=?, jumlah_beli=?, total_bayar=? WHERE ID_Transaksi=?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, Integer.parseInt(splits[0]));
+            st.setDate(2, sqlDate);
+            st.setString(3, namaPelanggan);
+            st.setInt(4, jumlahBeli);
+            st.setInt(5, Integer.parseInt(totalBayar));
+            st.setInt(6, Integer.parseInt(id_transaksi));
+
+            int rowInserted = st.executeUpdate();
+            if (rowInserted > 0) {
+                JOptionPane.showMessageDialog(this, "Data Berhasil Diubah");
+                resetForm(); // Pastikan method ini ada dan berfungsi.
+                DataTransaksi(); // Pastikan method ini memuat ulang data.
+            }
+            st.close();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Jumlah dan Harga harus berupa angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal menambahkan data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_Tombol_PerbaruiActionPerformed
 
     private void Tombol_HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_HapusActionPerformed
@@ -531,10 +583,10 @@ public class Panel_Kasir extends javax.swing.JPanel {
             // Eksekusi query penghapusan
             int rowsDeleted = st.executeUpdate();
             if (rowsDeleted > 0) {
-                JOptionPane.showMessageDialog(this, "Data Berhasil Dihapus.");
+                JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
                 DataTransaksi(); // Memuat ulang data tabel
             } else {
-                JOptionPane.showMessageDialog(this, "Gagal Menghapus Data.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Gagal menghapus data.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
             st.close();
@@ -546,34 +598,86 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
     private void Spinner_JumlahBarangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Spinner_JumlahBarangStateChanged
         // TODO add your handling code here:
-        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
-        String namabarang = (String) Text_NamaBarang.getSelectedItem();
-        
-        String[] splits = namabarang.split(" -- ");
+        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
+        String barang = (String) Combo_NamaBarang.getSelectedItem();
+
+        String[] splits = barang.split(" -- ");
         Integer hasil = 0;
-        
-         if (namabarang != null && jumlahbarang != 0) {
-            hasil = jumlahbarang * Integer.parseInt(splits[2]);
-         }
+
+        if (barang != null && jumlahBeli != 0) {
+            hasil = jumlahBeli * Integer.parseInt(splits[2]);
+        }
         Text_TotalHarga.setText(hasil.toString());
     }//GEN-LAST:event_Spinner_JumlahBarangStateChanged
 
-    private void Text_NamaBarangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Text_NamaBarangItemStateChanged
+    private void Combo_NamaBarangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Combo_NamaBarangItemStateChanged
         // TODO add your handling code here:
-        Integer jumlahbarang = (Integer) Spinner_JumlahBarang.getValue();
-        String namabarang = (String) Text_NamaBarang.getSelectedItem();
-        
-        String[] splits = namabarang.split(" -- ");
+        Integer jumlahBeli = (Integer) Spinner_JumlahBarang.getValue();
+        String barang = (String) Combo_NamaBarang.getSelectedItem();
+
+        String[] splits = barang.split(" -- ");
         Integer hasil = 0;
-        
-         if (namabarang != null && jumlahbarang != 0) {
-            hasil = jumlahbarang * Integer.parseInt(splits[2]);
-         }
-        Text_TotalHarga.setText(hasil.toString());
-    }//GEN-LAST:event_Text_NamaBarangItemStateChanged
+
+        if (barang != null && jumlahBeli != 0) {
+            hasil = jumlahBeli * Integer.parseInt(splits[2]);
+        }
+       Text_TotalHarga.setText(hasil.toString());
+    }//GEN-LAST:event_Combo_NamaBarangItemStateChanged
+
+    private void Tabel_TransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_TransaksiMouseClicked
+        // TODO add your handling code here:
+            int selectedRow = Tabel_Transaksi.getSelectedRow();
+
+//        jJumlah_Beli.setValue(10);
+//        "Id transaksi", "Nama pelanggan", "Barang", "Tanggal", "Jumlah", "Total"
+        if (selectedRow != -1) {
+            String Idtransaksi = Tabel_Transaksi.getValueAt(selectedRow, 0).toString();
+            String namaPelanggan = Tabel_Transaksi.getValueAt(selectedRow, 1).toString();
+            String barang = Tabel_Transaksi.getValueAt(selectedRow, 2).toString();
+            String jumlahBeli = Tabel_Transaksi.getValueAt(selectedRow, 4).toString();
+            String totalBayar = Tabel_Transaksi.getValueAt(selectedRow, 5).toString();
+
+            Text_ID_Transaksi.setText(Idtransaksi);
+            Text_NamaPembeli.setText(namaPelanggan);
+            Combo_NamaBarang.addItem(barang);
+            Combo_NamaBarang.setSelectedItem(barang);
+
+            try {
+                String tanggal = Tabel_Transaksi.getValueAt(selectedRow, 3).toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Format tanggal sesuai data
+                Date date = sdf.parse(tanggal); // Konversi String ke Date
+                J_TanggalTransaksi.setDate(date);         // Set nilai ke JDateChooser
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Format tanggal tidak valid!");
+            }
+            Text_TotalHarga.setText(totalBayar);
+
+            Object jumlahBeliObj = Tabel_Transaksi.getValueAt(selectedRow, 4);
+            if (jumlahBeliObj instanceof Integer) {
+                Spinner_JumlahBarang.setValue((Integer) jumlahBeliObj);
+            } else if (jumlahBeliObj instanceof Double) {
+                Spinner_JumlahBarang.setValue((Double) jumlahBeliObj);
+            } else {
+                JOptionPane.showMessageDialog(null, "Jumlah beli tidak valid.");
+            }
+        }
+
+        Tombol_Tambah.setEnabled(false);
+        Tombol_Perbarui.setEnabled(true);
+        Tombol_Hapus.setEnabled(true);
+    }//GEN-LAST:event_Tabel_TransaksiMouseClicked
+
+    private void Tombol_BatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_BatalActionPerformed
+        // TODO add your handling code here:
+        resetForm();
+        aktifButton();
+        nonaktifButton();
+    }//GEN-LAST:event_Tombol_BatalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Combo_NamaBarang;
     private com.toedter.calendar.JDateChooser J_TanggalTransaksi;
     private javax.swing.JLabel Label_ID_Kategori;
     private javax.swing.JLabel Label_JumlahBarang;
@@ -593,8 +697,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
     private Cob.PanelCustom Panel_TotalHarga;
     private javax.swing.JSpinner Spinner_JumlahBarang;
     private javax.swing.JTable Tabel_Transaksi;
-    private javax.swing.JTextField Text_ID_Kategori;
-    private javax.swing.JComboBox<String> Text_NamaBarang;
+    private javax.swing.JTextField Text_ID_Transaksi;
     private javax.swing.JTextField Text_NamaPembeli;
     private javax.swing.JTextField Text_TotalHarga;
     private javax.swing.JButton Tombol_Batal;
@@ -612,12 +715,12 @@ public class Panel_Kasir extends javax.swing.JPanel {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 ResultSet rs = stat.executeQuery();
 
-                Text_NamaBarang.removeAllItems();
-                Text_NamaBarang.addItem("--- pilih barang ---");
+                Combo_NamaBarang.removeAllItems();
+                Combo_NamaBarang.addItem("--- pilih barang ---");
 
                 while (rs.next()) {
                     String item = rs.getInt("id_barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
-                    Text_NamaBarang.addItem(item);
+                    Combo_NamaBarang.addItem(item);
                 }
 
                 rs.close();
@@ -643,7 +746,8 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
                 while (rs.next()) {
                     int idtransaksi = rs.getInt("ID_Transaksi");
-                    String namabarang = rs.getString("Nama_Barang") + " - " + rs.getString("Nama_kategori");
+                    String namabarang = rs.getString("id_barang") + " -- " + rs.getString("Nama_Barang") + " -- " + rs.getString("Harga_Barang");
+
                     String tanggaltransaksi = rs.getString("tanggal_transaksi");
                     String namapelanggan = rs.getString("nama_pelanggan");
                     int jumlahbeli = rs.getInt("jumlah_beli");
@@ -666,11 +770,21 @@ public class Panel_Kasir extends javax.swing.JPanel {
     }
 
     private void resetForm() {
-        Text_ID_Kategori.setText("");
+        Text_ID_Transaksi.setText("");
         Text_NamaPembeli.setText("");
-        Text_NamaBarang.setSelectedItem(0);
+        Combo_NamaBarang.setSelectedItem(0);
         J_TanggalTransaksi.setDate(null);
         Spinner_JumlahBarang.setValue(0);
         Text_TotalHarga.setText("");
+    }
+
+    private void aktifButton() {
+        Tombol_Tambah.setEnabled(true);
+        Tombol_Batal.setEnabled(true);
+    }
+
+    private void nonaktifButton() {
+        Tombol_Perbarui.setEnabled(false);
+        Tombol_Hapus.setEnabled(false);
     }
 }

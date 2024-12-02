@@ -2,9 +2,9 @@ package Apk;
 
 import com.formdev.flatlaf.FlatClientProperties;
 
-public class Panel_LaporanKeluar extends javax.swing.JPanel {
+public class Panel_Laporan extends javax.swing.JPanel {
 
-    public Panel_LaporanKeluar() {
+    public Panel_Laporan() {
         initComponents();
         
         Text_Pencarian.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian...");

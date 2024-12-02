@@ -565,7 +565,7 @@ public class Panel_Barang extends javax.swing.JPanel {
             int harga = Integer.parseInt(hargabarang);
 
             // Query SQL untuk update
-            String sql = "UPDATE tabel_barang SET Nama_Kategori =?, Nama_Barang=?, Jumlah_Barang=?, Harga_Barang=?, Deskripsi_Barang=? WHERE ID_Kategori=?";
+            String sql = "UPDATE tabel_barang SET Nama_Kategori =?, Nama_Barang=?, Jumlah_Barang=?, Harga_Barang=?, Deskripsi_Barang=? WHERE id_barang=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, namakategori);
             st.setString(2, namabarang);
@@ -580,7 +580,7 @@ public class Panel_Barang extends javax.swing.JPanel {
                 MengambilData(); // Refresh data tabel
                 resetForm(); // Reset input form
             } else {
-                JOptionPane.showMessageDialog(this, "Tidak ada data yang diperbarui. Periksa ID Kategori.");
+                JOptionPane.showMessageDialog(this, "Tidak ada data yang diperbarui. Periksa id bategori.");
             }
 
             st.close();
@@ -616,7 +616,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         if(confirm == JOptionPane.YES_OPTION) {
             
         try {
-            String sql = "DELETE FROM tabel_barang WHERE ID_Kategori=?";
+            String sql = "DELETE FROM tabel_barang WHERE id_barang=?";
             PreparedStatement st = con. prepareStatement(sql);
             st.setString(1, idkategori);
             
@@ -680,7 +680,7 @@ public class Panel_Barang extends javax.swing.JPanel {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                int idkategori = rs.getInt("ID_Kategori");
+                int idkategori = rs.getInt("id_barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
                 int jumlahbarang = rs.getInt("Jumlah_Barang");
@@ -737,7 +737,7 @@ public class Panel_Barang extends javax.swing.JPanel {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                int idkategori = rs.getInt("ID_Kategori");
+                int idkategori = rs.getInt("id_barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
                 int jumlahbarang = rs.getInt("Jumlah_Barang");
