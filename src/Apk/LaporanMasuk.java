@@ -125,7 +125,7 @@ public class LaporanMasuk extends javax.swing.JInternalFrame {
                 int idbarang = rs.getInt("ID_Barang");
                 String namakategori = rs.getString("Nama_Kategori");
                 String namabarang = rs.getString("Nama_Barang");
-                int jumlahbarang = rs.getInt("Jumlah_Barang");
+                int jumlahbarang = rs.getInt("jumlah_masuk");
                 int harga = rs.getInt("Harga_Barang");
                 String deskripsi = rs.getString("Deskripsi_Barang");
 

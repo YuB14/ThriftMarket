@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -552,7 +553,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
             // Lanjutkan proses insert ke tabel_transaksi
             String sql = "INSERT INTO tabel_transaksi (ID_Barang, Tanggal_Transaksi, Nama_Pembeli, Jumlah_Barang, Total_Harga) VALUES (?,?,?,?,?)";
-            PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // Tambahkan RETURN_GENERATED_KEYS
+            PreparedStatement st = con.prepareStatement(sql,java.sql.Statement.RETURN_GENERATED_KEYS); // Tambahkan RETURN_GENERATED_KEYS
             st.setInt(1, idbarang);
             st.setDate(2, sqlDate);
             st.setString(3, namapembeli);
@@ -560,9 +561,10 @@ public class Panel_Kasir extends javax.swing.JPanel {
             st.setInt(5, Integer.parseInt(totalharga));
 
             int rowInserted = st.executeUpdate();
+            ResultSet generatedKeys = st.getGeneratedKeys();
             if (rowInserted > 0) {
                 // Ambil ID Transaksi yang baru dibuat (opsional)
-                ResultSet generatedKeys = st.getGeneratedKeys();
+//                ResultSet generatedKeys = st.getGeneratedKeys();
                 if (generatedKeys.next()) {
                     int idTransaksiBaru = generatedKeys.getInt(1); // Ambil ID Transaksi
                     System.out.println("ID Transaksi baru: " + idTransaksiBaru);
@@ -571,10 +573,11 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
                 // Kurangi jumlah stok di tabel_barang
                 String updateStokSql = "UPDATE tabel_barang SET Jumlah_Barang = Jumlah_Barang - ? WHERE ID_Barang = ?";
-                PreparedStatement updateStokSt = con.prepareStatement(updateStokSql);
+                PreparedStatement updateStokSt = con.prepareStatement(updateStokSql,java.sql.Statement.RETURN_GENERATED_KEYS);
                 updateStokSt.setInt(1, jumlahbarangdiambil);
                 updateStokSt.setInt(2, idbarang);
                 updateStokSt.executeUpdate();
+                ResultSet generatedKey = updateStokSt.getGeneratedKeys();
                 updateStokSt.close();
 
                 JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan");
@@ -583,13 +586,9 @@ public class Panel_Kasir extends javax.swing.JPanel {
             }
             st.close();
 
-        } catch (NumberFormatException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Jumlah dan Harga Harus Berupa Angka!", "Peringatan", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Gagal Menambahkan Data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(Frame_Dashboard.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }//GEN-LAST:event_Tombol_TambahActionPerformed
 
     private void Tombol_PerbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tombol_PerbaruiActionPerformed

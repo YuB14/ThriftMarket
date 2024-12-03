@@ -487,13 +487,14 @@ public class Panel_Barang extends javax.swing.JPanel {
             int jumlah = Integer.parseInt(jumlahbarang);
             int harga = Integer.parseInt(hargabarang);
 
-            String sql = "INSERT INTO tabel_barang (Nama_Kategori, Nama_Barang, Jumlah_Barang, Harga_Barang, Deskripsi_Barang) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tabel_barang (Nama_Kategori, Nama_Barang, jumlah_masuk, Jumlah_Barang, Harga_Barang, Deskripsi_Barang) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, namakategori);
             st.setString(2, namabarang);
             st.setInt(3, jumlah);
-            st.setInt(4, harga);
-            st.setString(5, deskripsibarang);
+            st.setInt(4, jumlah);
+            st.setInt(5, harga);
+            st.setString(6, deskripsibarang);
 
             int rowInserted = st.executeUpdate();
             if (rowInserted > 0) {

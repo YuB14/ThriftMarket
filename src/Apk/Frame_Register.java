@@ -138,7 +138,7 @@ public class Frame_Register extends javax.swing.JFrame {
         // TODO add your handling code here:
         String role, notelp, uname, pass, query;
         String Surl, Suname, Spass;
-        Surl = "jdbc:MySQL://localhost:3306/mythrift";
+        Surl = "jdbc:MySQL://localhost:3306/project";
         Suname = "root";
         Spass = "";
         try {
