@@ -1,8 +1,11 @@
 package Apk;
 
 import DataBase.database;
+import java.awt.Color; 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import com.mysql.cj.xdevapi.Statement;
+//import java.beans.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -14,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+
 public class Panel_Kasir extends javax.swing.JPanel {
 
     DefaultTableModel model;
@@ -22,7 +26,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
     public Panel_Kasir() {
         initComponents();
         DataBarang();
-        String[] judul = {"Id transaksi", "Nama pelanggan", "Barang", "Tanggal", "Jumlah", "Total"};
+        String[] judul = {"ID Transaksi", "Nama Pembeli", "Nama Barang", "Tanggal Transaksi", "Jumlah Barang", "Total Harga"};
         model = new DefaultTableModel(judul, 0);
         Tabel_Transaksi.setModel(model);
 
@@ -70,6 +74,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_ID_Kategori.setRoundTopLeft(40);
         Panel_ID_Kategori.setRoundTopRight(40);
 
+        Text_ID_Transaksi.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_ID_Transaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_ID_KategoriLayout = new javax.swing.GroupLayout(Panel_ID_Kategori);
@@ -95,6 +100,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_NamaPembeli.setRoundTopLeft(40);
         Panel_NamaPembeli.setRoundTopRight(40);
 
+        Text_NamaPembeli.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_NamaPembeli.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_NamaPembeliLayout = new javax.swing.GroupLayout(Panel_NamaPembeli);
@@ -120,6 +126,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_NamaBarang.setRoundTopLeft(40);
         Panel_NamaBarang.setRoundTopRight(40);
 
+        Combo_NamaBarang.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Combo_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Combo_NamaBarang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -209,6 +216,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_TotalHarga.setRoundTopLeft(40);
         Panel_TotalHarga.setRoundTopRight(40);
 
+        Text_TotalHarga.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_TotalHarga.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_TotalHargaLayout = new javax.swing.GroupLayout(Panel_TotalHarga);
@@ -234,9 +242,18 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_Tambah.setRoundTopLeft(40);
         Panel_Tambah.setRoundTopRight(40);
 
+        Tombol_Tambah.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Tambah.setText("Tambah");
         Tombol_Tambah.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_Tambah.setContentAreaFilled(false);
+        Tombol_Tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Tombol_TambahMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Tombol_TambahMouseExited(evt);
+            }
+        });
         Tombol_Tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_TambahActionPerformed(evt);
@@ -248,13 +265,13 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_TambahLayout.setHorizontalGroup(
             Panel_TambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_TambahLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(Tombol_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(Tombol_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         Panel_TambahLayout.setVerticalGroup(
             Panel_TambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tombol_Tambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(Tombol_Tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Panel_Perbarui.setBackground(new java.awt.Color(255, 255, 255));
@@ -263,9 +280,18 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_Perbarui.setRoundTopLeft(40);
         Panel_Perbarui.setRoundTopRight(40);
 
+        Tombol_Perbarui.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Perbarui.setText("Perbarui");
         Tombol_Perbarui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_Perbarui.setContentAreaFilled(false);
+        Tombol_Perbarui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Tombol_PerbaruiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Tombol_PerbaruiMouseExited(evt);
+            }
+        });
         Tombol_Perbarui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_PerbaruiActionPerformed(evt);
@@ -277,13 +303,13 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_PerbaruiLayout.setHorizontalGroup(
             Panel_PerbaruiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_PerbaruiLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         Panel_PerbaruiLayout.setVerticalGroup(
             Panel_PerbaruiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(Tombol_Perbarui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         Panel_Batal.setBackground(new java.awt.Color(255, 255, 255));
@@ -292,9 +318,18 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_Batal.setRoundTopLeft(40);
         Panel_Batal.setRoundTopRight(40);
 
+        Tombol_Batal.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Batal.setText("Batal");
         Tombol_Batal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_Batal.setContentAreaFilled(false);
+        Tombol_Batal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Tombol_BatalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Tombol_BatalMouseExited(evt);
+            }
+        });
         Tombol_Batal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_BatalActionPerformed(evt);
@@ -306,13 +341,13 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_BatalLayout.setHorizontalGroup(
             Panel_BatalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_BatalLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(Tombol_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(Tombol_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         Panel_BatalLayout.setVerticalGroup(
             Panel_BatalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tombol_Batal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(Tombol_Batal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Panel_Hapus.setBackground(new java.awt.Color(255, 255, 255));
@@ -321,9 +356,18 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_Hapus.setRoundTopLeft(40);
         Panel_Hapus.setRoundTopRight(40);
 
+        Tombol_Hapus.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Hapus.setText("Hapus");
         Tombol_Hapus.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Tombol_Hapus.setContentAreaFilled(false);
+        Tombol_Hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Tombol_HapusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Tombol_HapusMouseExited(evt);
+            }
+        });
         Tombol_Hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tombol_HapusActionPerformed(evt);
@@ -334,27 +378,29 @@ public class Panel_Kasir extends javax.swing.JPanel {
         Panel_Hapus.setLayout(Panel_HapusLayout);
         Panel_HapusLayout.setHorizontalGroup(
             Panel_HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_HapusLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(Tombol_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+            .addGroup(Panel_HapusLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(Tombol_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         Panel_HapusLayout.setVerticalGroup(
             Panel_HapusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Tombol_Hapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+            .addComponent(Tombol_Hapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
+        Tabel_Transaksi.setFont(new java.awt.Font("Cambria", 0, 13)); // NOI18N
         Tabel_Transaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID_Transaksi", "Nama Pembeli", "Nama Barang", "Tanggal Transaksi", "Jumlah Barang", "Total Harga"
             }
         ));
+        Tabel_Transaksi.setSelectionBackground(new java.awt.Color(25, 69, 105));
         Tabel_Transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Tabel_TransaksiMouseClicked(evt);
@@ -382,9 +428,6 @@ public class Panel_Kasir extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -401,25 +444,29 @@ public class Panel_Kasir extends javax.swing.JPanel {
                                         .addComponent(Panel_TanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(Panel_NamaBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Panel_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Panel_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(Panel_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(Panel_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Label_JumlahBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                                     .addComponent(Label_TotalHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Panel_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(139, 139, 139)
+                                        .addComponent(Panel_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Panel_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(291, 291, 291))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(Panel_JumlahHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(764, 764, 764))
                                     .addComponent(Panel_TotalHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(28, 28, 28)))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Panel_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -449,15 +496,16 @@ public class Panel_Kasir extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Label_TotalHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Panel_TotalHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Panel_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(Panel_Perbarui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Panel_Tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Panel_Batal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Panel_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -474,7 +522,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Semua Kolom Harus Terisi", "Peringatan", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         try {
             Connection con = database.getConnection();
             java.sql.Date sqlDate = new java.sql.Date(tanggaltransaksi.getTime());
@@ -504,7 +552,7 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
             // Lanjutkan proses insert ke tabel_transaksi
             String sql = "INSERT INTO tabel_transaksi (ID_Barang, Tanggal_Transaksi, Nama_Pembeli, Jumlah_Barang, Total_Harga) VALUES (?,?,?,?,?)";
-            PreparedStatement st = con.prepareStatement(sql);
+            PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // Tambahkan RETURN_GENERATED_KEYS
             st.setInt(1, idbarang);
             st.setDate(2, sqlDate);
             st.setString(3, namapembeli);
@@ -513,6 +561,14 @@ public class Panel_Kasir extends javax.swing.JPanel {
 
             int rowInserted = st.executeUpdate();
             if (rowInserted > 0) {
+                // Ambil ID Transaksi yang baru dibuat (opsional)
+                ResultSet generatedKeys = st.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int idTransaksiBaru = generatedKeys.getInt(1); // Ambil ID Transaksi
+                    System.out.println("ID Transaksi baru: " + idTransaksiBaru);
+                }
+                generatedKeys.close();
+
                 // Kurangi jumlah stok di tabel_barang
                 String updateStokSql = "UPDATE tabel_barang SET Jumlah_Barang = Jumlah_Barang - ? WHERE ID_Barang = ?";
                 PreparedStatement updateStokSt = con.prepareStatement(updateStokSql);
@@ -623,6 +679,10 @@ public class Panel_Kasir extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
+        resetForm();
+        DataTransaksi();
+        aktifButton();
+        nonaktifButton();
     }//GEN-LAST:event_Tombol_HapusActionPerformed
 
     private void Spinner_JumlahBarangStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Spinner_JumlahBarangStateChanged
@@ -703,6 +763,46 @@ public class Panel_Kasir extends javax.swing.JPanel {
         aktifButton();
         nonaktifButton();
     }//GEN-LAST:event_Tombol_BatalActionPerformed
+
+    private void Tombol_TambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_TambahMouseEntered
+        // TODO add your handling code here:
+        Panel_Tambah.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_Tombol_TambahMouseEntered
+
+    private void Tombol_TambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_TambahMouseExited
+        // TODO add your handling code here:
+        Panel_Tambah.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_Tombol_TambahMouseExited
+
+    private void Tombol_PerbaruiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_PerbaruiMouseEntered
+        // TODO add your handling code here:
+        Panel_Perbarui.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_Tombol_PerbaruiMouseEntered
+
+    private void Tombol_PerbaruiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_PerbaruiMouseExited
+        // TODO add your handling code here:
+        Panel_Perbarui.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_Tombol_PerbaruiMouseExited
+
+    private void Tombol_BatalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_BatalMouseEntered
+        // TODO add your handling code here:
+        Panel_Batal.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_Tombol_BatalMouseEntered
+
+    private void Tombol_BatalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_BatalMouseExited
+        // TODO add your handling code here:
+        Panel_Batal.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_Tombol_BatalMouseExited
+
+    private void Tombol_HapusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_HapusMouseEntered
+        // TODO add your handling code here:
+        Panel_Hapus.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_Tombol_HapusMouseEntered
+
+    private void Tombol_HapusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tombol_HapusMouseExited
+        // TODO add your handling code here:
+        Panel_Hapus.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_Tombol_HapusMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

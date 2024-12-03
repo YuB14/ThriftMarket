@@ -355,7 +355,10 @@ public class MenuUtama extends javax.swing.JFrame {
         Panel_Frame.repaint();
         Panel_Frame.revalidate();
         
-
+        Panel_Navigasi.removeAll();
+        Panel_Navigasi.add(new NavigasiLaporan());
+        Panel_Navigasi.repaint();
+        Panel_Navigasi.revalidate();
     }//GEN-LAST:event_Ikon_LaporanMouseClicked
 
     private void Ikon_KasirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ikon_KasirMouseClicked

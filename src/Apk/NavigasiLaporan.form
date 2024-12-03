@@ -23,8 +23,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="581" max="-2" attributes="0"/>
-              <EmptySpace pref="395" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="704" max="32767" attributes="0"/>
               <Component id="panelCustom1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
@@ -54,7 +54,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="69" green="45" red="19" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Laporan Keluar"/>
+        <Property name="text" type="java.lang.String" value="Laporan "/>
       </Properties>
     </Component>
     <Container class="Cob.PanelCustom" name="panelCustom1">

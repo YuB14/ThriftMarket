@@ -25,7 +25,6 @@ public class Panel_Barang extends javax.swing.JPanel {
         nonaktifButton();
         aktifButton();
         
-        Text_Pencarian.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian...");
         Text_NamaKategori.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Kategori");
         Text_NamaBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama Barang");
         Text_JumlahBarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Jumlah Barang");
@@ -42,9 +41,6 @@ public class Panel_Barang extends javax.swing.JPanel {
         Text_NamaKategori = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Data = new javax.swing.JTable();
-        Panel_Pencarian = new Cob.PanelCustom();
-        Text_Pencarian = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         Panel_NamaBarang = new Cob.PanelCustom();
         Text_NamaBarang = new javax.swing.JTextField();
         Panel_JumlahBarang = new Cob.PanelCustom();
@@ -70,7 +66,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_NamaKategori.setRoundTopLeft(30);
         Panel_NamaKategori.setRoundTopRight(30);
 
-        Text_NamaKategori.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Text_NamaKategori.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_NamaKategori.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_NamaKategoriLayout = new javax.swing.GroupLayout(Panel_NamaKategori);
@@ -98,7 +94,7 @@ public class Panel_Barang extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID_Kategori", "Nama Kategori", "Nama Barang", "Jumlah Barang", "Harga Barang", "Deskripsi Barang"
+                "ID_Barang", "Nama Kategori", "Nama Barang", "Jumlah Barang", "Harga Barang", "Deskripsi Barang"
             }
         ));
         Tabel_Data.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,33 +104,13 @@ public class Panel_Barang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Tabel_Data);
 
-        Panel_Pencarian.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Pencarian.setRoundBottomLeft(30);
-        Panel_Pencarian.setRoundBottomRight(30);
-        Panel_Pencarian.setRoundTopLeft(30);
-        Panel_Pencarian.setRoundTopRight(30);
-        Panel_Pencarian.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Text_Pencarian.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        Text_Pencarian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Text_Pencarian.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Text_PencarianKeyTyped(evt);
-            }
-        });
-        Panel_Pencarian.add(Text_Pencarian, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 10, 590, 30));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Search.png"))); // NOI18N
-        Panel_Pencarian.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 9, -1, 30));
-
         Panel_NamaBarang.setBackground(new java.awt.Color(255, 255, 255));
         Panel_NamaBarang.setRoundBottomLeft(30);
         Panel_NamaBarang.setRoundBottomRight(30);
         Panel_NamaBarang.setRoundTopLeft(30);
         Panel_NamaBarang.setRoundTopRight(30);
 
-        Text_NamaBarang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Text_NamaBarang.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_NamaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_NamaBarangLayout = new javax.swing.GroupLayout(Panel_NamaBarang);
@@ -161,7 +137,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_JumlahBarang.setRoundTopLeft(30);
         Panel_JumlahBarang.setRoundTopRight(30);
 
-        Text_JumlahBarang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Text_JumlahBarang.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_JumlahBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout Panel_JumlahBarangLayout = new javax.swing.GroupLayout(Panel_JumlahBarang);
@@ -187,7 +163,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         panelCustom2.setRoundTopLeft(30);
         panelCustom2.setRoundTopRight(30);
 
-        Text_HargaBarang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Text_HargaBarang.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_HargaBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout panelCustom2Layout = new javax.swing.GroupLayout(panelCustom2);
@@ -213,7 +189,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         panelCustom3.setRoundTopLeft(30);
         panelCustom3.setRoundTopRight(30);
 
-        Text_DeskripsiBarang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Text_DeskripsiBarang.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Text_DeskripsiBarang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout panelCustom3Layout = new javax.swing.GroupLayout(panelCustom3);
@@ -239,7 +215,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_Tambah.setRoundTopLeft(30);
         Panel_Tambah.setRoundTopRight(30);
 
-        Tombol_Tambah.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        Tombol_Tambah.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Tambah.setText("Tambah");
         Tombol_Tambah.setBorder(null);
         Tombol_Tambah.setContentAreaFilled(false);
@@ -281,7 +257,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_Perbarui.setRoundTopLeft(30);
         Panel_Perbarui.setRoundTopRight(30);
 
-        Tombol_Perbarui.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        Tombol_Perbarui.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Perbarui.setText("Perbarui");
         Tombol_Perbarui.setBorder(null);
         Tombol_Perbarui.setContentAreaFilled(false);
@@ -323,7 +299,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_Batal.setRoundTopLeft(30);
         Panel_Batal.setRoundTopRight(30);
 
-        Tombol_Batal.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        Tombol_Batal.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Batal.setText("Batal");
         Tombol_Batal.setBorder(null);
         Tombol_Batal.setContentAreaFilled(false);
@@ -365,7 +341,7 @@ public class Panel_Barang extends javax.swing.JPanel {
         Panel_Hapus.setRoundTopLeft(30);
         Panel_Hapus.setRoundTopRight(30);
 
-        Tombol_Hapus.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        Tombol_Hapus.setFont(new java.awt.Font("Cambria", 0, 16)); // NOI18N
         Tombol_Hapus.setText("Hapus");
         Tombol_Hapus.setBorder(null);
         Tombol_Hapus.setContentAreaFilled(false);
@@ -423,37 +399,34 @@ public class Panel_Barang extends javax.swing.JPanel {
                         .addComponent(panelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(panelCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Panel_Pencarian, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(Panel_Pencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(Panel_NamaKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(Panel_NamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(Panel_JumlahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(panelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(panelCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Panel_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Panel_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(Panel_NamaKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(Panel_NamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(Panel_JumlahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(panelCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(panelCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Panel_Perbarui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Panel_Tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Panel_Batal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Panel_Hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -661,45 +634,6 @@ public class Panel_Barang extends javax.swing.JPanel {
         Tombol_Hapus.setEnabled(true);
     }//GEN-LAST:event_Tabel_DataMouseClicked
 
-    private void Text_PencarianKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Text_PencarianKeyTyped
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) Tabel_Data.getModel();
-        model.setRowCount(0);
-        
-        String cari = Text_Pencarian.getText();
-
-        try {
-            
-            String sql = "SELECT * FROM tabel_barang WHERE Nama_Kategori LIKE ? OR Nama_Barang LIKE ? OR Jumlah_Barang LIKE ? OR Harga_Barang LIKE ? OR Deskripsi_Barang LIKE ?";
-            PreparedStatement st = con.prepareStatement(sql);
-            st.setString(1,"%" + cari + "%");
-            st.setString(2,"%" + cari + "%");
-            st.setString(3,"%" + cari + "%");
-            st.setString(4,"%" + cari + "%");
-            st.setString(5,"%" + cari + "%");
-            ResultSet rs = st.executeQuery();
-
-            while (rs.next()) {
-                int idbarang = rs.getInt("ID_Barang");
-                String namakategori = rs.getString("Nama_Kategori");
-                String namabarang = rs.getString("Nama_Barang");
-                int jumlahbarang = rs.getInt("Jumlah_Barang");
-                int harga = rs.getInt("Harga_Barang");
-                String deskripsi = rs.getString("Deskripsi_Barang");
-
-                Object[] rowData = {idbarang, namakategori, namabarang, jumlahbarang, harga, deskripsi};
-                model.addRow(rowData);
-            }
-
-            rs.close();
-            st.close();
-
-        } catch (Exception e) {
-            Logger.getLogger(Frame_Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
-
-        }
-    }//GEN-LAST:event_Text_PencarianKeyTyped
-
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Cob.PanelCustom Panel_Batal;
@@ -707,7 +641,6 @@ public class Panel_Barang extends javax.swing.JPanel {
     private Cob.PanelCustom Panel_JumlahBarang;
     private Cob.PanelCustom Panel_NamaBarang;
     private Cob.PanelCustom Panel_NamaKategori;
-    private Cob.PanelCustom Panel_Pencarian;
     private Cob.PanelCustom Panel_Perbarui;
     private Cob.PanelCustom Panel_Tambah;
     private javax.swing.JTable Tabel_Data;
@@ -716,12 +649,10 @@ public class Panel_Barang extends javax.swing.JPanel {
     private javax.swing.JTextField Text_JumlahBarang;
     private javax.swing.JTextField Text_NamaBarang;
     private javax.swing.JTextField Text_NamaKategori;
-    private javax.swing.JTextField Text_Pencarian;
     private javax.swing.JButton Tombol_Batal;
     private javax.swing.JButton Tombol_Hapus;
     private javax.swing.JButton Tombol_Perbarui;
     private javax.swing.JButton Tombol_Tambah;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private Cob.PanelCustom panelCustom2;
     private Cob.PanelCustom panelCustom3;

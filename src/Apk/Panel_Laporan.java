@@ -1,100 +1,132 @@
 package Apk;
 
-import com.formdev.flatlaf.FlatClientProperties;
-
 public class Panel_Laporan extends javax.swing.JPanel {
 
     public Panel_Laporan() {
         initComponents();
-        
-        Text_Pencarian.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pencarian...");
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Panel_Pencarian = new Cob.PanelCustom();
-        jLabel1 = new javax.swing.JLabel();
-        Text_Pencarian = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabel_Data = new javax.swing.JTable();
+        Text_PilihLaporan = new javax.swing.JLabel();
+        panelCustom2 = new Cob.PanelCustom();
+        jButton2 = new javax.swing.JButton();
+        panelCustom1 = new Cob.PanelCustom();
+        jButton1 = new javax.swing.JButton();
+        DekstopPane = new javax.swing.JDesktopPane();
 
         setBackground(new java.awt.Color(204, 204, 204));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Panel_Pencarian.setBackground(new java.awt.Color(255, 255, 255));
-        Panel_Pencarian.setRoundBottomLeft(40);
-        Panel_Pencarian.setRoundBottomRight(40);
-        Panel_Pencarian.setRoundTopLeft(40);
-        Panel_Pencarian.setRoundTopRight(40);
+        Text_PilihLaporan.setFont(new java.awt.Font("Bookman Old Style", 1, 35)); // NOI18N
+        Text_PilihLaporan.setText("Pilih Laporan :");
+        add(Text_PilihLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 19, 360, 100));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Search.png"))); // NOI18N
+        panelCustom2.setBackground(new java.awt.Color(255, 255, 255));
+        panelCustom2.setRoundBottomLeft(40);
+        panelCustom2.setRoundBottomRight(40);
+        panelCustom2.setRoundTopLeft(40);
+        panelCustom2.setRoundTopRight(40);
 
-        Text_Pencarian.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        javax.swing.GroupLayout Panel_PencarianLayout = new javax.swing.GroupLayout(Panel_Pencarian);
-        Panel_Pencarian.setLayout(Panel_PencarianLayout);
-        Panel_PencarianLayout.setHorizontalGroup(
-            Panel_PencarianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_PencarianLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Text_Pencarian, javax.swing.GroupLayout.PREFERRED_SIZE, 1075, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
-        );
-        Panel_PencarianLayout.setVerticalGroup(
-            Panel_PencarianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_PencarianLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Panel_PencarianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Text_Pencarian, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        Tabel_Data.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID_Kategori", "Nama Kategori", "Nama Barang", "Jumlah Barang", "Harga Barang", "Deskripsi Barang", "Tanggal Transaksi"
+        jButton2.setFont(new java.awt.Font("Bookman Old Style", 1, 16)); // NOI18N
+        jButton2.setText("Laporan Keluar");
+        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(Tabel_Data);
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(Panel_Pencarian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelCustom2Layout = new javax.swing.GroupLayout(panelCustom2);
+        panelCustom2.setLayout(panelCustom2Layout);
+        panelCustom2Layout.setHorizontalGroup(
+            panelCustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustom2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Panel_Pencarian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+        panelCustom2Layout.setVerticalGroup(
+            panelCustom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        add(panelCustom2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, 112));
+
+        panelCustom1.setBackground(new java.awt.Color(255, 255, 255));
+        panelCustom1.setRoundBottomLeft(40);
+        panelCustom1.setRoundBottomRight(40);
+        panelCustom1.setRoundTopLeft(40);
+        panelCustom1.setRoundTopRight(40);
+
+        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 16)); // NOI18N
+        jButton1.setText("Laporan Masuk");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCustom1Layout = new javax.swing.GroupLayout(panelCustom1);
+        panelCustom1.setLayout(panelCustom1Layout);
+        panelCustom1Layout.setHorizontalGroup(
+            panelCustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCustom1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        panelCustom1Layout.setVerticalGroup(
+            panelCustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+        );
+
+        add(panelCustom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
+
+        DekstopPane.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout DekstopPaneLayout = new javax.swing.GroupLayout(DekstopPane);
+        DekstopPane.setLayout(DekstopPaneLayout);
+        DekstopPaneLayout.setHorizontalGroup(
+            DekstopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1200, Short.MAX_VALUE)
+        );
+        DekstopPaneLayout.setVerticalGroup(
+            DekstopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        add(DekstopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 1200, 450));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        LaporanMasuk masuk = new LaporanMasuk();
+        masuk.setVisible(true);
+        DekstopPane.add(masuk);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        LaporanKeluar keluar = new LaporanKeluar();
+        keluar.setVisible(true);
+        DekstopPane.add(keluar);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Cob.PanelCustom Panel_Pencarian;
-    private javax.swing.JTable Tabel_Data;
-    private javax.swing.JTextField Text_Pencarian;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JDesktopPane DekstopPane;
+    private javax.swing.JLabel Text_PilihLaporan;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private Cob.PanelCustom panelCustom1;
+    private Cob.PanelCustom panelCustom2;
     // End of variables declaration//GEN-END:variables
 }
